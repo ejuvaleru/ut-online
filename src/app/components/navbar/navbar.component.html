@@ -1,0 +1,46 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+            <img src="https://lh6.googleusercontent.com/proxy/7nzCbv6lkRkqdF0uPLenYVH3rC3wK4Q4MGyIPsssoYC3u_K3UzxZ2jMXwtpghUvwRGg7lGcIirDLCMXDKEsCXQK-Wp3Qh1vFYRXDMy9QadOLbkssdkVTznhR"
+                width="" height="">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarItems"
+            #menuHamburger (click)="toggleNavbar()">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu" #navbarItems>
+        <div class="navbar-start">
+            <a class="navbar-item" routerLink="/" (click)="toggleNavbarNo()">
+                Dashboard
+            </a>
+
+            <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
+                Clases en vivo
+            </a>
+
+            <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
+                Calendario
+            </a>
+
+            <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
+                Tareas
+            </a>
+
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary is-fullwidth" (click)="logOut()">
+                        Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

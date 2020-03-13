@@ -1,0 +1,32 @@
+#menu {
+  min-height: 100vh;
+  height: auto;
+  width: 20vw !important;
+  max-width: 20vw !important;
+  background-color: var(--primary-color);
+  .menu-list a {
+    color: white !important;
+  }
+  .menu-list a:hover {
+    color: black !important;
+  }
+}
+#navbar {
+  display: none;
+}
+.image {
+  /* Margin top and botttom 30, left and right auto to center the image*/
+  margin: 30px auto;
+  img {
+    border-radius: 50% 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+  #menu {
+    display: none;
+  }
+  #navbar {
+    display: block;
+  }
+}
