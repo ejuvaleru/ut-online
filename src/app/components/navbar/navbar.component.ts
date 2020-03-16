@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('navbarItems', { static: true }) navbarItems: ElementRef;
 
   isLogin: Observable<boolean>;
+  user: any;
 
   constructor(private router: Router,
     public authService: AuthService
@@ -24,6 +25,7 @@ export class NavbarComponent implements OnInit {
     this.isLogin.subscribe(res => {
       console.log('isLogin? ', res);
     });
+    this.user = JSON.parse(localStorage.getItem('estudiante'));
   }
 
   toggleNavbar() {

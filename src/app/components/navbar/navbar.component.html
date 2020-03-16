@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io">
-            <img src="https://lh6.googleusercontent.com/proxy/7nzCbv6lkRkqdF0uPLenYVH3rC3wK4Q4MGyIPsssoYC3u_K3UzxZ2jMXwtpghUvwRGg7lGcIirDLCMXDKEsCXQK-Wp3Qh1vFYRXDMy9QadOLbkssdkVTznhR"
+            <img src="https://lh4.googleusercontent.com/proxy/2clVJMgqDiBWAjN8Bxk7BgW6Jd5g32slnzzgknLbA85_ZT9Y4a4BaR62ikPJN59McgLkE6iBkelC2FHbRLNWfCcotvFLGbzaymFq24CFEt60BEw"
                 width="" height="">
         </a>
 
@@ -15,20 +15,25 @@
 
     <div class="navbar-menu" #navbarItems>
         <div class="navbar-start">
-            <a class="navbar-item" routerLink="/" (click)="toggleNavbarNo()">
-                Dashboard
+            <p class="navbar-item">
+                Hola {{user.userName}}
+            </p>
+
+            <a class="navbar-item" [routerLink]="['dashboard']" routerLinkActive="active-link" (click)="toggleNavbarNo()">
+                <span><i class="fas fa-tachometer-alt"></i></span> Dashboard
+            </a>
+
+            <a class="navbar-item" [routerLink]="['clases-en-vivo']" routerLinkActive="active-link"
+                (click)="toggleNavbarNo()">
+                <span><i class="fas fa-video"></i></span> Clases en vivo
             </a>
 
             <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
-                Clases en vivo
+                <span><i class="fas fa-calendar-alt"></i></span> Calendario
             </a>
 
             <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
-                Calendario
-            </a>
-
-            <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
-                Tareas
+                <span><i class="fas fa-pencil-alt"></i></span> Tareas
             </a>
 
         </div>
@@ -37,7 +42,7 @@
             <div class="navbar-item">
                 <div class="buttons">
                     <a class="button is-primary is-fullwidth" (click)="logOut()">
-                        Cerrar sesión
+                        <span><i class="fas fa-sign-out-alt"></i></span> Cerrar sesión
                     </a>
                 </div>
             </div>

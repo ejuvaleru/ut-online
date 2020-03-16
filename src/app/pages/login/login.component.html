@@ -4,22 +4,36 @@
 
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="number" placeholder="Matricula" formControlName="matricula">
+                    <input class="input" type="text" placeholder="Matricula" formControlName="matricula" #matricula
+                        id="matricula">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-id-card"></i>
                     </span>
-                    <!-- <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span> -->
+                    <span class="icon is-small is-right">
+                        <p *ngIf="loginForm?.value.matricula.length < 7">{{loginForm?.value.matricula.length}}</p>
+                        <i *ngIf="loginForm?.value.matricula.length > 7" class="fas fa-check"></i>
+                    </span>
                 </p>
+                <div *ngIf="loginForm.controls['matricula'].invalid && (loginForm.controls['matricula'].touched || loginForm.controls['matricula'].dirty)"
+                    class="cross-validation-error-message alert alert-danger">
+                    La matrícula es requerida.
+                </div>
             </div>
             <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Contraseña" formControlName="contraseña">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="password" placeholder="Contraseña" formControlName="contrasenia">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
+                    <span class="icon is-small is-right">
+                        <p *ngIf="loginForm?.value.contrasenia.length < 5">{{loginForm?.value.contrasenia.length}}</p>
+                        <i *ngIf="loginForm?.value.contrasenia.length > 5" class="fas fa-check"></i>
+                    </span>
                 </p>
+                <div *ngIf="loginForm.controls['contrasenia'].invalid && (loginForm.controls['contrasenia'].touched || loginForm.controls['contrasenia'].dirty)"
+                    class="cross-validation-error-message alert alert-danger">
+                    La contraseña debe tener al menos 6 caracteres.
+                </div>
             </div>
             <div class="field">
                 <p class="control">

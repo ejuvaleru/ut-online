@@ -1,3 +1,14 @@
-.navbar{
-    // background-color: var(--primary-color);
+.navbar {
+  background-color: var(--primary-color);
+}
+.navbar-burger {
+  color: rgb(235, 235, 235);
+}
+.navbar-burger:hover {
+  color: white;
+}
+.active-link {
+  color: white;
+  font-weight: 800;
+  background-color: rgb(49, 49, 49);
 }

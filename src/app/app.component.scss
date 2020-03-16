@@ -5,10 +5,10 @@
   max-width: 20vw !important;
   background-color: var(--primary-color);
   .menu-list a {
-    color: white !important;
+    color: white;
   }
   .menu-list a:hover {
-    color: black !important;
+    color: black ;
   }
 }
 #navbar {
@@ -16,11 +16,21 @@
 }
 .image {
   /* Margin top and botttom 30, left and right auto to center the image*/
-  margin: 30px auto;
+  margin: 25px auto;
   img {
     border-radius: 50% 50%;
   }
 }
+.user{
+  margin-bottom: 25px;
+}
+
+.active-link {
+  color: black!important;
+  font-weight: 800;
+  background-color: white;
+}
+
 
 @media (max-width: 1024px) {
   #menu {
