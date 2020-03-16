@@ -7,8 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
 
   users = [
-    { userName: 'Luis Enrique', password: '123456', schoolId: '17391074', group: 'ITIC82' },
-    { userName: 'Valeria Alejandra', password: '123456', schoolId: '17391012', group: 'ITIC82' },
+    { userName: 'Luis Enrique', password: '123456', schoolId: 17391074, group: 'ITIC82' },
+    { userName: 'Valeria Alejandra', password: '123456', schoolId: 17391012, group: 'ITIC82' },
   ];
 
   isLogged = new BehaviorSubject<boolean>(this.hasToken());
@@ -32,7 +32,9 @@ export class AuthService {
   }
 
   logIn(id, pass) {
-    const loggedUser = this.users.find(u => u.password === pass && u.schoolId === id);
+    console.log(id, pass);
+    let loggedUser = this.users.find(u => u.password === pass && u.schoolId === id);
+    console.log(loggedUser);
     if (loggedUser) {
       return { loggedUser, message: 'Inicio de sesión exitoso.', code: 200 };
     } else {

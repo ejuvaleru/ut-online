@@ -8,6 +8,7 @@ import { ClasesEnVivoComponent } from './pages/clases-en-vivo/clases-en-vivo.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StreamComponent } from './pages/stream/stream.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { StreamComponent } from './pages/stream/stream.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
