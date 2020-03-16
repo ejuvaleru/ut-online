@@ -1,6 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #00ab84;
+  --background: #fff;
+  --font-color: #222428;
+
+  // Cards
+  --card-background: #fff;
+
+  body.dark {
+    --primary-color: #00664e !important;
+    --background: #222428;
+    --font-color: #fff;
+
+    // Cards
+    --card-background: #121212;
+  }
+}
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--background);
+  color: var(--font-color) !important;
+}
+.is-primary {
+  background-color: var(--primary-color) !important;
+}
+.title {
+  color: var(--font-color);
+}
+.subtitle {
+  color: var(--font-color);
+}
+.card {
+  background-color: var(--card-background);
 }
 .columns {
   padding: 0;
@@ -10,10 +41,15 @@ body {
   padding: 0;
   margin: 0;
 }
-:root {
-  --primary-color: #00ab84;
+time {
+  color: var(--font-color);
 }
-
+.navbar-menu.is-active {
+  background-color: var(--card-background);
+}
+.navbar-item {
+  color: var(--font-color);
+}
 // Toast CSS
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 

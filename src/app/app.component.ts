@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './shared/auth.service';
 import { Router } from '@angular/router';
+import { ThemeService } from './shared/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +19,21 @@ export class AppComponent implements OnInit {
   date: Date;
   time;
 
+  darkMode: boolean = true;
+
   constructor(
     private router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private themeService: ThemeService
   ) { }
 
 
   ngOnInit() {
+
+    this.themeService.checkDarkTheme();
+    const prefersDark = this.themeService.checkDarkTheme();;
+    this.darkMode = prefersDark;
+
     this.isLogin = this.authService.isLoggedIn();
     this.isLogin.subscribe(res => {
       console.log('isLogin? ', res);
@@ -54,6 +63,17 @@ export class AppComponent implements OnInit {
     } else {
       this.greeting = 'Buenas noches';
       console.log('Good evening!!')
+    }
+  }
+
+  cambio() {
+    this.darkMode = !this.darkMode;
+    if (this.darkMode) {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('isDarkMode', 'true');
+    } else {
+      document.body.classList.toggle('dark');
+      localStorage.removeItem('isDarkMode');
     }
   }
 }

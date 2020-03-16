@@ -9,6 +9,9 @@
             </figure>
             <div class="user has-text-centered has-text-white">
                 <p class="is-size-5"><span class="is-size-6">{{greeting}},</span> {{user?.userName}}</p>
+                <button class="button is-primary" (click)="cambio()" *ngIf="!darkMode"> <i class="fas fa-moon"></i>
+                </button>
+                <button class="button is-dark" (click)="cambio()" *ngIf="darkMode"> <i class="fas fa-sun"></i> </button>
             </div>
             <!-- Finish profile pic -->
 

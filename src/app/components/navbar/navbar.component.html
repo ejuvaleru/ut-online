@@ -45,6 +45,10 @@
                     <a class="button is-primary is-fullwidth" (click)="logOut()">
                         <span><i class="fas fa-sign-out-alt"></i></span> Cerrar sesión
                     </a>
+                    <button class="button is-primary is-fullwidth" (click)="cambio()" *ngIf="!darkMode"> <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="button is-dark is-fullwidth" (click)="cambio()" *ngIf="darkMode"> <i class="fas fa-sun"></i>
+                    </button>
                 </div>
             </div>
         </div>

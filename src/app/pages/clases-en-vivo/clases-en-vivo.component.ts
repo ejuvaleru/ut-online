@@ -8,15 +8,18 @@ import { SubjectService } from 'src/app/shared/subject.service';
 })
 export class ClasesEnVivoComponent implements OnInit {
 
-  subjects = [];
+  subjectsLive = [];
+  subjectsNext = [];
 
   constructor(
     private subjectService: SubjectService
   ) { }
 
   ngOnInit(): void {
-    this.subjects = this.subjectService.getSubjects();
-    console.log(this.subjects);
+    this.subjectsLive = this.subjectService.getSubjectsLive();
+    console.log(this.subjectsLive);
+
+    this.subjectsNext = this.subjectService.getSubjectsNext();
   }
 
 }
