@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/auth.service';
 import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/shared/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,11 +22,19 @@ export class NavbarComponent implements OnInit {
 
   greeting = '';
 
+  darkMode: boolean = true;
+
   constructor(private router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private themeService: ThemeService
   ) { }
 
   ngOnInit(): void {
+    this.themeService.checkDarkTheme();
+
+    const prefersDark = this.themeService.checkDarkTheme();;
+    this.darkMode = prefersDark;
+
     this.isLogin = this.authService.isLoggedIn();
     this.isLogin.subscribe(res => {
       console.log('isLogin? ', res);
@@ -65,6 +74,17 @@ export class NavbarComponent implements OnInit {
     } else {
       this.greeting = 'Buenas noches';
       console.log('Good evening!!')
+    }
+  }
+
+  cambio() {
+    this.darkMode = !this.darkMode;
+    if (this.darkMode) {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('isDarkMode', 'true');
+    } else {
+      document.body.classList.toggle('dark');
+      localStorage.removeItem('isDarkMode');
     }
   }
 }
