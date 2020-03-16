@@ -1,16 +1,13 @@
 .subject-box {
   margin: 10px;
 }
-
-.titles{
+.titles {
   margin-top: 10px;
 }
-
 .video {
   height: 400px;
   background-color: grey;
 }
-
 .chat {
   margin: 10px 0px 0px 10px;
   padding: 10px 0 0 10px;
@@ -19,7 +16,6 @@
   width: auto;
   background-color: black;
   overflow-y: scroll;
-  color: white;
 }
 .mensaje {
   position: relative;

@@ -12,6 +12,14 @@ export class StreamComponent implements OnInit {
   idSubject = '';
   subjectElement: any;
 
+  // Array para chat
+  chat: any[] = [];
+  chat2 = [{usuario: 'Profesor', mensaje: 'Buenos días chicos'},
+  {usuario: 'Luis', mensaje: 'Buenos días profesor'},
+  {usuario: 'Alejandra', mensaje: 'Hola a todos'},
+  {usuario: 'Ramiro', mensaje: 'Coronavirus time'},
+  {usuario: 'Miranda', mensaje: 'Ya no sé qué poner'}];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -29,6 +37,22 @@ export class StreamComponent implements OnInit {
       }
     });
 
+    this.startChat();
   }
+
+
+
+  // Método para iniciar chat
+  async startChat() {
+    // tslint:disable-next-line:prefer-for-of
+    for ( let i = 0; i < this.chat2.length; ++i) {
+      this.chat.push(this.chat2[i]);
+      await this.delay(3000);
+    }
+  }
+ // Delay para el chat
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
 
 }
