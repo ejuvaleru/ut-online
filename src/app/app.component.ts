@@ -54,10 +54,10 @@ export class AppComponent implements OnInit {
     this.date = new Date();
     this.time = this.date.getHours();
     console.log(this.time);
-    if (this.time > 4 && this.time < 12) {
+    if (this.time >= 4 && this.time < 12) {
       this.greeting = 'Buenos días';
       console.log('Good morning!');
-    } else if (this.time > 12 && this.time <= 19) {
+    } else if (this.time >= 12 && this.time <= 19) {
       this.greeting = 'Buenas tardes';
       console.log('Good arfternoon!');
     } else {
