@@ -16,6 +16,11 @@ export class NavbarComponent implements OnInit {
   isLogin: Observable<boolean>;
   user: any;
 
+  date: Date;
+  time;
+
+  greeting = '';
+
   constructor(private router: Router,
     public authService: AuthService
   ) { }
@@ -24,6 +29,7 @@ export class NavbarComponent implements OnInit {
     this.isLogin = this.authService.isLoggedIn();
     this.isLogin.subscribe(res => {
       console.log('isLogin? ', res);
+      this.setUpGreeting();
     });
     this.user = JSON.parse(localStorage.getItem('estudiante'));
   }
@@ -43,5 +49,21 @@ export class NavbarComponent implements OnInit {
     console.log(this.isLogin);
     this.authService.onLogout();
     this.router.navigateByUrl('/login');
+  }
+
+  setUpGreeting() {
+    this.date = new Date();
+    this.time = this.date.getHours();
+    console.log(this.time);
+    if (this.time > 4 && this.time < 12) {
+      this.greeting = 'Buenos días';
+      console.log('Good morning!');
+    } else if (this.time > 12 && this.time <= 19) {
+      this.greeting = 'Buenas tardes';
+      console.log('Good arfternoon!');
+    } else {
+      this.greeting = 'Buenas noches';
+      console.log('Good evening!!')
+    }
   }
 }

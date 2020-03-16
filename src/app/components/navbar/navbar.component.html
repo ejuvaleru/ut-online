@@ -16,10 +16,11 @@
     <div class="navbar-menu" #navbarItems>
         <div class="navbar-start">
             <p class="navbar-item">
-                Hola {{user.userName}}
+                {{greeting}} {{user.userName}}
             </p>
 
-            <a class="navbar-item" [routerLink]="['dashboard']" routerLinkActive="active-link" (click)="toggleNavbarNo()">
+            <a class="navbar-item" [routerLink]="['dashboard']" routerLinkActive="active-link"
+                (click)="toggleNavbarNo()">
                 <span><i class="fas fa-tachometer-alt"></i></span> Dashboard
             </a>
 
