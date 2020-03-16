@@ -33,7 +33,7 @@ export class AuthService {
 
   logIn(id, pass) {
     console.log(id, pass);
-    const loggedUser = this.users.find(u => u.password === pass && u.schoolId === id);
+    const loggedUser = this.users.find(u => u.password == pass && u.schoolId == id);
     console.log(loggedUser);
     if (loggedUser) {
       localStorage.setItem('estudiante', JSON.stringify(loggedUser));
