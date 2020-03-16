@@ -8,7 +8,11 @@
         <div class="column is-12-mobile is-8-desktop is-12-tablet">
             <div class="subject-box">
                 <div class="video">
-
+                    <video  autoplay="true">
+                        <source src="{{subjectElement.video}}"
+                                type="video/mp4">
+                    </video>
+                    
                 </div>
                 <div class="titles">
                     <h2> <span class="title is-5">{{subjectElement.name}}</span> - {{subjectElement.teacher}}</h2>
