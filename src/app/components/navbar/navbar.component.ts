@@ -46,6 +46,7 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.toggleNavbarNo();
     localStorage.removeItem('isLogin');
+    localStorage.removeItem('estudiante');
     console.log(this.isLogin);
     this.authService.onLogout();
     this.router.navigateByUrl('/login');

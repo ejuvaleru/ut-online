@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     if (code === 200) {
       this.toast.success(message, 'Mensaje', { positionClass: 'toast-bottom-center', timeOut: 3000 });
     } else if (code === 400) {
-      this.toast.error(this.mensaje, 'Error', { positionClass: 'toast-bottom-center', timeOut: 3000 });
+      this.toast.error(message, 'Error', { positionClass: 'toast-bottom-center', timeOut: 3000 });
     }
   }
 
