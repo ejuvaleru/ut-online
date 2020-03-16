@@ -33,13 +33,13 @@ export class AuthService {
 
   logIn(id, pass) {
     console.log(id, pass);
-    let loggedUser = this.users.find(u => u.password === pass && u.schoolId == id);
+    const loggedUser = this.users.find(u => u.password === pass && u.schoolId === id);
     console.log(loggedUser);
     if (loggedUser) {
       localStorage.setItem('estudiante', JSON.stringify(loggedUser));
       return { loggedUser, message: 'Inicio de sesión exitoso.', code: 200 };
     } else {
-      return { loggedUser, message: 'Usuario o contraseña incorrectos.', code: 400 }
+      return { loggedUser, message: 'Usuario o contraseña incorrectos.', code: 400 };
     }
   }
 }

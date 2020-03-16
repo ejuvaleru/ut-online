@@ -17,38 +17,9 @@
         </div>
         <div class="column is-4 is-12-tablet is-4-desktop">
             <div class="chat">
-                <p>aquí el chat 1</p>
-                <p>aquí el chat 2</p>
-                <p>aquí el chat 3</p>
-                <p>aquí el chat 4</p>
-                <p>aquí el chat 5</p>
-                <p>aquí el chat 6</p>
-                <p>aquí el chat 7</p>
-                <p>aquí el chat 8</p>
-                <p>aquí el chat 9</p>
-                <p>aquí el chat 10</p>
-                <p>aquí el chat 11</p>
-                <p>aquí el chat 12</p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
-                <p>aquí el chat </p>
+                <div  *ngFor= "let m of chat">
+                    <p> <strong>{{m.usuario}}: </strong> {{m.mensaje}} </p>
+                </div>
             </div>
             <div class="mensaje">
                 <input class="input" type="text" placeholder="Mensaje">
