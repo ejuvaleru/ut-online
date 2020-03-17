@@ -35,7 +35,6 @@
             "scripts": [
               "node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.min.js",
               "node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.js",
-              "src/assets/js/bulma-steps.js",
               "node_modules/bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min.js"
             ]
           },
