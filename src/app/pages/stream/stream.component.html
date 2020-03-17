@@ -1,33 +1,40 @@
 <div class="container">
-    <div class="">
-        <a class="button is-primary is-fullwidth" routerLink="/clases-en-vivo">
+    <div class="encabezado">
+        <h1 class="title is-1 ">{{subjectElement.name}}</h1>
+
+        <a class="button is-primary is-medium " routerLink="/clases-en-vivo">
             Volver
         </a>
+
     </div>
     <div class="columns">
         <div class="column is-12-mobile is-8-desktop is-12-tablet">
             <div class="subject-box">
-                <div class="video">
-                    <video controls autoplay="true">
-                        <source src="{{subjectElement.video}}"
-                                type="video/mp4">
+                <video controls autoplay="true">
+                    <source src="{{subjectElement.video}}" type="video/mp4">
+                </video>
 
-                    </video>
-                    
-                </div>
                 <div class="titles">
-                    <h2> <span class="title is-5">{{subjectElement.name}}</span> - {{subjectElement.teacher}}</h2>
+                    <h2> <span class="title is-5">{{subjectElement.teacher}}</span></h2>
+                    <h3>{{subjectElement.abstract}}</h3>
                 </div>
             </div>
+
+
         </div>
+
         <div class="column is-4 is-12-tablet is-4-desktop">
             <div class="chat">
-                <div  *ngFor= "let m of chat">
+                <h3 class="subtitle is-5 has-text-centered is-uppercase"> Chat del stream</h3>
+                <div *ngFor="let m of chat">
                     <p> <strong>{{m.usuario}}: </strong> {{m.mensaje}} </p>
                 </div>
             </div>
             <div class="mensaje">
-                <input class="input" type="text" placeholder="Mensaje">
+                <input class="input" type="text" name='mensaje' placeholder="Mensaje" #nuevoMensaje
+                    (keyup.enter)="sendMessage(nuevoMensaje.value); nuevoMensaje.value=''">
+                <button class="button is-primary" (click)="sendMessage(nuevoMensaje.value); nuevoMensaje.value=''">
+                    Enviar</button>
             </div>
         </div>
     </div>

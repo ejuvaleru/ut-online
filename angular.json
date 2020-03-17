@@ -29,9 +29,15 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/bulma-extensions/bulma-steps/dist/css/bulma-steps.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.min.js",
+              "node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.js",
+              "src/assets/js/bulma-steps.js",
+              "node_modules/bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min.js"
+            ]
           },
           "configurations": {
             "production": {

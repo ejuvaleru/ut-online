@@ -7,8 +7,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
 
   users = [
-    { userName: 'Luis Enrique', password: '123456', schoolId: 17391074, group: 'ITIC82' },
-    { userName: 'Valeria Alejandra', password: '123456', schoolId: 17391012, group: 'ITIC82' },
+    {
+      userName: 'Luis Enrique', password: '123456', schoolId: 17391074, group: 'ITIC82',
+      carrera: 'Ingeniería en Tecnologías de la Información y Comunicación',
+      edificio: 'H-H120', cuatrimestre: 'Octavo cuatrimestre', tutor: 'Neil Miller'
+    },
+    {
+      userName: 'Valeria Alejandra', password: '123456', schoolId: 17391012, group: 'ITIC82',
+      carrera: 'Ingeniería en Tecnologías de la Información y Comunicación',
+      edificio: 'H-H120', cuatrimestre: 'Octavo cuatrimestre', tutor: 'Neil Miller'
+    },
   ];
 
   isLogged = new BehaviorSubject<boolean>(this.hasToken());

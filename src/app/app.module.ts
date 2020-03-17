@@ -13,6 +13,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { FaqsComponent } from './pages/faqs/faqs.component';
+import { ClasesProgramadasComponent } from './pages/clases-programadas/clases-programadas.component';
+import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { ToastrModule } from 'ngx-toastr';
     ClasesEnVivoComponent,
     NavbarComponent,
     LoginComponent,
-    StreamComponent
+    StreamComponent,
+    FaqsComponent,
+    ClasesProgramadasComponent,
+    VideoGrabadoComponent
   ],
   imports: [
     BrowserModule,

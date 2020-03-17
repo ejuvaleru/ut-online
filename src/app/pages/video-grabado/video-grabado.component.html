@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="encabezado">
+        <h1 class="title is-1 ">{{subjectElement.name}}</h1>
+
+        <a class="button is-primary is-medium " routerLink="/clases-grabadas">
+            Volver
+        </a>
+
+    </div>
+    <div class="columns">
+        <div class="column is-12-mobile is-8-desktop is-12-tablet">
+            <div class="subject-box">
+                <video controls autoplay="false">
+                    <source src="{{video}}" type="video/mp4">
+                </video>
+
+                <div class="titles">
+                    <h2> <span class="title is-5">{{subjectElement.teacher}}</span></h2>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="column is-4 is-12-tablet is-4-desktop">
+            <div class="chat">
+                <h3 class="subtitle is-5 has-text-centered is-uppercase"> Temas del curso  </h3>
+               <div *ngFor= "let tema of curso.temas">
+                   <a (click) = "cambiarVideo(tema.video)">{{tema.nombre}}</a>
+
+               </div>
+            </div>
+            <div class="mensaje">
+               
+            </div>
+        </div>
+    </div>
+</div>

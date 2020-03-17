@@ -22,10 +22,14 @@
                     </a></li>
                 <li><a [routerLink]="['clases-en-vivo']" routerLinkActive="active-link">
                         <span><i class="fas fa-video"></i></span> Clases en vivo</a></li>
+                        <li><a [routerLink]="['clases-grabadas']" routerLinkActive="active-link">
+                            <span><i class="fas fa-video"></i></span> Clases grabadas</a></li>
                 <li><a routerLink="/">
                         <span><i class="fas fa-calendar-alt"></i></span> Calendario</a></li>
                 <li><a routerLink="/">
                         <span><i class="fas fa-pencil-alt"></i></span> Tareas</a></li>
+                <li><a routerLink="/faqs">
+                        <span><i class="fas fa-question"></i></span> Faqs</a></li>
                 <li><a (click)="logOut()">
                         <span><i class="fas fa-sign-out-alt"></i></span> Cerrar sesión</a></li>
             </ul>

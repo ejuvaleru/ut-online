@@ -29,12 +29,20 @@
                 <span><i class="fas fa-video"></i></span> Clases en vivo
             </a>
 
+            <a class="navbar-item" [routerLink]="['clases-grabadas']" routerLinkActive="active-link"
+            (click)="toggleNavbarNo()">
+            <span><i class="fas fa-video"></i></span> Clases grabadas
+        </a>
+
             <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
                 <span><i class="fas fa-calendar-alt"></i></span> Calendario
             </a>
 
             <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
                 <span><i class="fas fa-pencil-alt"></i></span> Tareas
+            </a>
+            <a class="navbar-item" routerLink="/faqs" (click)="toggleNavbarNo()">
+                <span><i class="fas fa-question"></i></span> Faqs
             </a>
 
         </div>
@@ -45,9 +53,11 @@
                     <a class="button is-primary is-fullwidth" (click)="logOut()">
                         <span><i class="fas fa-sign-out-alt"></i></span> Cerrar sesión
                     </a>
-                    <button class="button is-primary is-fullwidth" (click)="cambio()" *ngIf="!darkMode"> <i class="fas fa-moon"></i>
+                    <button class="button is-primary is-fullwidth" (click)="cambio()" *ngIf="!darkMode"> <i
+                            class="fas fa-moon"></i>
                     </button>
-                    <button class="button is-dark is-fullwidth" (click)="cambio()" *ngIf="darkMode"> <i class="fas fa-sun"></i>
+                    <button class="button is-dark is-fullwidth" (click)="cambio()" *ngIf="darkMode"> <i
+                            class="fas fa-sun"></i>
                     </button>
                 </div>
             </div>
