@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubjectService } from 'src/app/shared/subject.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stream',
@@ -39,8 +40,20 @@ export class StreamComponent implements OnInit {
 
     this.startChat();
   }
-
-
+  openAlert() {
+    swal.fire({
+      title: 'Cuidado',
+      text: '¿Realmente desea abandonar el stream?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Salir',
+      cancelButtonText: 'Cancelar'
+    }).then(res => {
+      if (res.value) {
+        this.router.navigateByUrl('/clases-en-vivo');
+      }
+    });
+  }
 
   // Método para iniciar chat
   async startChat() {
@@ -56,11 +69,11 @@ export class StreamComponent implements OnInit {
   }
 
 
-  // enviar mensaje
+  // Send a message
 
   sendMessage(nuevoMensaje: string) {
     if (nuevoMensaje) {
-      this.chat.push({usuario: 'YO', mensaje: nuevoMensaje}) ;
+      this.chat.push({ usuario: 'YO', mensaje: nuevoMensaje });
     }
   }
 
