@@ -17,9 +17,13 @@
   min-height: 540px;
   max-height: 540px;
   width: auto;
-  background-color: black;
+  background-color: var(--chat-background);
   overflow-y: scroll;
-  color: white;
+  color: var(--font-color);
+}
+
+strong{
+  color: var(--font-color) !important;
 }
 .mensaje {
   position: relative;
