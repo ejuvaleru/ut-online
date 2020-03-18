@@ -29,18 +29,11 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css",
-              "node_modules/bulma-extensions/bulma-steps/dist/css/bulma-steps.min.css",
-              "node_modules/swiper/css/swiper.css"
+              "node_modules/ngx-toastr/toastr.css"
+              
             ],
             "scripts": [
-              "node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.js",
-<<<<<<< HEAD
-              "node_modules/bulma-extensions/bulma-steps/dist/js/bulma-steps.min.js",
-              "src/assets/js/bulma-steps.js",
-=======
->>>>>>> 0cbbb0f409f65e8dd001b78d738918220c937fd1
-              "node_modules/bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min.js"
+             
             ]
           },
           "configurations": {

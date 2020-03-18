@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Swiper, { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-dashboard',

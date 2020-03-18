@@ -14,9 +14,12 @@
   min-height: 540px;
   max-height: 540px;
   width: auto;
-  background-color: black;
+  background-color: var(--chat-background);
   overflow-y: scroll;
-  color: white;
+  color: var(--font-color);
+}
+strong {
+  color: var(--font-color) !important;
 }
 .mensaje {
   position: relative;
@@ -51,4 +54,10 @@ video::-webkit-media-controls-current-time-display {
 }
 video::-webkit-media-controls-time-remaining-display {
   display: none;
+}
+@media screen and (max-width: 768px) {
+  .button.is-fullwidth-mobile {
+    display: flex;
+    width: 100%;
+  }
 }

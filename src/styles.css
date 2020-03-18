@@ -3,12 +3,14 @@
   --background: #fff;
   --font-color: #222428;
   --card-background: #fff;
+  --chat-background: #f5f5f5;
 }
 :root body.dark {
   --primary-color: #149685 !important;
   --background: #222428;
   --font-color: #fff;
   --card-background: #121212;
+  --chat-background: #121212;
 }
 body {
   font-family: "Poppins", sans-serif;
