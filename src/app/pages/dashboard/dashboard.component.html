@@ -1,66 +1,65 @@
 <div class="container">
-    <h1 class="title is-size-1 has-text-centered">UT-ONLINE</h1>
-    <div class="columns  is-desktop ">
+  <h1 class="title is-size-1 has-text-centered">UT-ONLINE</h1>
+  <div class="columns  is-desktop ">
 
-        <div class="card column is-two-fifths is-primary">
-            <div class="card-content has-text-centered ">
-                <p class="title">
-                    {{user.userName}}
-                </p>
-                <p class="subtitle">
-                    {{user.carrera}}
-                </p>
-                <p class="subtitle">
-                    {{user.schoolId}}
-                </p>
-            </div>
-        </div>
-
-        <div class="card column is-two-fifths is-primary">
-            <div class="card-content has-text-centered  ">
-                <p class="title">
-                    {{user.group}}
-                </p>
-                <p class="subtitle">
-                    {{user.edificio}}
-                </p>
-                <p class="subtitle">
-                    {{user.cuatrimestre}}
-                </p>
-                <p class="subtitle">
-                    {{user.tutor}}
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class=" has-text-centered">
-        <button class="button is-primary  is-large" (click)="openModal()">¿Que puedo hacer en la
-            plataforma?</button>
-
+    <div class="card column is-two-fifths is-primary">
+      <div class="card-content has-text-centered ">
+        <p class="title">
+          {{user.userName}}
+        </p>
+        <p class="subtitle">
+          {{user.carrera}}
+        </p>
+        <p class="subtitle">
+          {{user.schoolId}}
+        </p>
+      </div>
     </div>
 
-
-
-    <!--Modal de registro-->
-    <div *ngIf="modal=== true" class="modal is-active">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Ayuda</p>
-                <button class="delete" aria-label="close" (click)="closeModal()"></button>
-            </header>
-
-            <section class="modal-card-body">
-                <figure class="image">
-                    <img src="/assets/images/options.png">
-                </figure>
-            </section>
-
-            <footer class="modal-card-foot ">
-
-            </footer>
-
-        </div>
+    <div class="card column is-two-fifths is-primary">
+      <div class="card-content has-text-centered  ">
+        <p class="title">
+          {{user.group}}
+        </p>
+        <p class="subtitle">
+          {{user.edificio}}
+        </p>
+        <p class="subtitle">
+          {{user.cuatrimestre}}
+        </p>
+        <p class="subtitle">
+          {{user.tutor}}
+        </p>
+      </div>
     </div>
+  </div>
+  <div class=" has-text-centered">
+    <button class="button is-primary  is-large" (click)="openModal()">¿Que puedo hacer en la
+      plataforma?</button>
+
+  </div>
+
+
+
+  <!--Modal de registro-->
+  <div *ngIf="modal=== true" class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Ayuda</p>
+        <button class="delete" aria-label="close" (click)="closeModal()"></button>
+      </header>
+
+      <section class="modal-card-body">
+       
+        
+      </section>
+
+      <footer class="modal-card-foot ">
+
+      </footer>
+
+    </div>
+  </div>
 
 </div>

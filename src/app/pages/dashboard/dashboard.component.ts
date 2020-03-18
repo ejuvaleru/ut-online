@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swiper, { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +11,14 @@ export class DashboardComponent implements OnInit {
 
   user: any;
   modal = false;
+
+
   constructor() { }
 
   ngOnInit(): void {
 
     this.user = JSON.parse(localStorage.getItem('estudiante'));
+
   }
 
   openModal() {
