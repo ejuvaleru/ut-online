@@ -2,7 +2,7 @@
   margin: 10px;
 }
 
-.titles{
+.titles {
   margin-top: 10px;
 }
 
@@ -33,10 +33,9 @@
   margin-right: 10px;
 }
 
-.encabezado{
+.encabezado {
   margin: 30px 10px;
 }
-
 
 @media (max-width: 768px) {
   .chat {
@@ -47,7 +46,6 @@
     background-color: black;
   }
 }
-
 
 video::-webkit-media-controls-play-button {
   display: none;
@@ -61,6 +59,13 @@ video::-webkit-media-controls-current-time-display {
   display: none;
 }
 
-video::-webkit-media-controls-time-remaining-display{
+video::-webkit-media-controls-time-remaining-display {
   display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .button.is-fullwidth-mobile {
+    display: flex;
+    width: 100%;
+  }
 }

@@ -1,11 +1,7 @@
 <div class="container">
     <div class="encabezado">
         <h1 class="title is-1 ">{{subjectElement.name}}</h1>
-
-        <a class="button is-primary is-medium " routerLink="/clases-en-vivo">
-            Volver
-        </a>
-
+        <button class="button is-primary is-medium is-fullwidth-mobile" (click)="openAlert()">Volver</button>
     </div>
     <div class="columns">
         <div class="column is-12-mobile is-8-desktop is-12-tablet">
