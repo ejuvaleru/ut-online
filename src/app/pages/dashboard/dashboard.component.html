@@ -50,9 +50,91 @@
         <button class="delete" aria-label="close" (click)="closeModal()"></button>
       </header>
 
-      <section class="modal-card-body">
-       
-        
+      <section class="modal-card-body tutorial">
+
+        <div class="clases-en-vivo">
+          <h4 class="subtitle is-3 has-text-centered">Clases en vivo</h4>
+          <p class="has-text-justified">Podrás acceder a todas las clases virtuales a través de esta plataforma.</p>
+          <p class="has-text-justified">Unicamente tienes que acceder a la opción <a
+              routerLink='/clases-en-vivo'>"Clases en vivo"</a> del menú
+            y dar click en el botón <u>"Unirse"</u> de los en vivos que se presentan.</p>
+          <figure class="image has-text-centered columns is-desktop">
+            <img class="column" src="/assets/images/MenuStream.PNG">
+            <img class="column" src="/assets/images/stream.png">
+          </figure>
+          <p>
+            Durante el en vivo podrás preguntar a tu profesor sobre el tema de la clase, a través del chat en vivo que
+            aparece a un lado.
+          </p>
+          <figure class="image ">
+
+            <img class="" style="margin: 5% auto;" src="/assets/images/chat.PNG">
+          </figure>
+        </div>
+
+        <div class="clases-grabadas" style="margin: 5% auto;">
+          <h4 class="subtitle is-3 has-text-centered">Clases grabadas</h4>
+          <p class="has-text-justified">Podrás acceder a todos los cursos virtuales a través de esta plataforma.</p>
+          <p class="has-text-justified">Unicamente tienes que acceder a la opción <a
+              routerLink='/clases-grabadas'>"Clases grabadas"</a> del menú
+            y dar click en el botón <u>"Ir al curso"</u> de las materias que se presentan.</p>
+          <figure class="image has-text-centered columns is-desktop">
+            <img class="column" src="/assets/images/MenuGrabadas.PNG">
+            <img class="column" src="/assets/images/tutorial.png">
+          </figure>
+          <p>
+            Aquí podrás acceder a toda la colección de videos sobre distintos temas del curso.
+          </p>
+          <figure class="image ">
+
+            <img class="" style="margin: auto;" src="/assets/images/Temas.PNG">
+          </figure>
+        </div>
+
+        <div class="calendario" style="margin: 5% auto;">
+          <h4 class="subtitle is-3 has-text-centered">Calendario</h4>
+          <p class="has-text-justified">La modalidad semipresencial por ahora no cubre la realización de exámenes en
+            línea.</p>
+          <p class="has-text-justified">Podrás verificar las fechas en las que te tendrás que presentar en la
+            institución para realizar las pruebas de evaluación correspondiente, solo tienes que dar click en la opción
+            <a routerLink='/clases-grabadas'>"Calendario"</a> del menú
+            .</p>
+          <figure class="image has-text-centered columns is-desktop">
+            <img class="column" src="/assets/images/MenuCalendario.PNG">
+            <img class="column" src="/assets/images/calendario.png">
+          </figure>
+
+        </div>
+
+
+        <div class="tareas" style="margin: 5% auto;">
+          <h4 class="subtitle is-3 has-text-centered">Tareas</h4>
+          <p class="has-text-justified">Estamos trabajando para brindarte un espacio en donde puedas entregar tus tareas
+            a través de la plataforma.</p>
+          <figure class="image ">
+
+            <img class="" style="margin: 5% auto; max-width: 80%;" src="/assets/images/work.png">
+          </figure>
+
+        </div>
+
+
+        <div class="Faqs" style="margin: 5% auto;">
+          <h4 class="subtitle is-3 has-text-centered">Faqs</h4>
+          <p class="has-text-justified">Si tienes alguna pregunta, hemos creado para ti una sección especial en donde
+            encontrarás respuesta a las preguntas más comunes sobre la plataforma. Unicamente tienes que acceder a la
+            opción <a routerLink='/faqs'>"Faqs"</a> del menú
+          </p>
+
+          <figure class="image ">
+
+            <img class="" style="margin: 5% auto; max-width: 80%;" src="/assets/images/faq.png">
+          </figure>
+
+        </div>
+
+
+
       </section>
 
       <footer class="modal-card-foot ">

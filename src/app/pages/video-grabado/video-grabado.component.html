@@ -23,10 +23,10 @@
         </div>
 
         <div class="column is-4 is-12-tablet is-4-desktop">
-            <div class="chat">
+            <div class="temas">
                 <h3 class="subtitle is-5 has-text-centered is-uppercase"> Temas del curso  </h3>
                <div *ngFor= "let tema of curso.temas">
-                   <a (click) = "cambiarVideo(tema.video)">{{tema.nombre}}</a>
+                   <p (click) = "cambiarVideo(tema.video)">{{tema.nombre}}</p>
 
                </div>
             </div>

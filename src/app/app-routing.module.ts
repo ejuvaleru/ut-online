@@ -21,6 +21,7 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'faqs', component: FaqsComponent },
+  {path: 'calendario', component: DashboardComponent},
   {
     path: 'clases-grabadas', children: [
       { path: '', component: ClasesProgramadasComponent},

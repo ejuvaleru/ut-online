@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
 
   user: any;
   modal = false;
@@ -19,6 +18,8 @@ export class DashboardComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('estudiante'));
 
   }
+
+
 
   openModal() {
     this.modal = true;
