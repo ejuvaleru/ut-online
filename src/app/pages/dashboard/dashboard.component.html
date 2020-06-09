@@ -1,147 +1,192 @@
 <div class="container">
   <h1 class="title is-size-1 has-text-centered">UT-ONLINE</h1>
-  <div class="columns  is-desktop ">
 
-    <div class="card column is-two-fifths is-primary">
-      <div class="card-content has-text-centered ">
+  <h1 *ngIf="user && rol === 'isTeacher'" class="title is-3 has-text-centered">
+    Bienvenido(a) Profesor
+  </h1>
+  <h1 *ngIf="user && rol === 'isAdmin'" class="title is-3 has-text-centered">
+    Bienvenido(a) Colaborador
+  </h1>
+
+  <div
+    class="card is-primary"
+    *ngIf="(user && rol === 'isTeacher') || (user && rol === 'isAdmin')"
+  >
+    <div class="card-content has-text-centered">
+      <p class="title">
+        {{ user.userName }}
+      </p>
+    </div>
+  </div>
+
+  <div class="columns is-desktop">
+    <div
+      class="card column is-two-fifths is-primary"
+      *ngIf="user && rol === 'isStudent'"
+    >
+      <div class="card-content has-text-centered">
         <p class="title">
-          {{user.userName}}
+          {{ user.userName }}
         </p>
         <p class="subtitle">
-          {{user.carrera}}
+          {{ user.carrera }}
         </p>
         <p class="subtitle">
-          {{user.schoolId}}
+          {{ user.schoolId }}
         </p>
       </div>
     </div>
 
-    <div class="card column is-two-fifths is-primary">
-      <div class="card-content has-text-centered  ">
+    <div
+      class="card column is-two-fifths is-primary"
+      *ngIf="user && rol === 'isStudent'"
+    >
+      <div class="card-content has-text-centered">
         <p class="title">
-          {{user.group}}
+          {{ user.group }}
         </p>
         <p class="subtitle">
-          {{user.edificio}}
+          {{ user.edificio }}
         </p>
         <p class="subtitle">
-          {{user.cuatrimestre}}
+          {{ user.cuatrimestre }}
         </p>
         <p class="subtitle">
-          {{user.tutor}}
+          {{ user.tutor }}
         </p>
       </div>
     </div>
   </div>
-  <div class=" has-text-centered">
-    <button class="button is-primary  is-large" (click)="openModal()">¿Que puedo hacer en la
-      plataforma?</button>
-
+  <div class="has-text-centered" *ngIf="user && rol === 'isStudent'">
+    <button class="button is-primary is-large" (click)="openModal()">
+      ¿Que puedo hacer en la plataforma?
+    </button>
   </div>
-
-
 
   <!--Modal de registro-->
-  <div *ngIf="modal=== true" class="modal is-active">
+  <div *ngIf="modal === true" class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Ayuda</p>
-        <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        <button
+          class="delete"
+          aria-label="close"
+          (click)="closeModal()"
+        ></button>
       </header>
 
       <section class="modal-card-body tutorial">
-
         <div class="clases-en-vivo">
           <h4 class="subtitle is-3 has-text-centered">Clases en vivo</h4>
-          <p class="has-text-justified">Podrás acceder a todas las clases virtuales a través de esta plataforma.</p>
-          <p class="has-text-justified">Unicamente tienes que acceder a la opción <a
-              routerLink='/clases-en-vivo'>"Clases en vivo"</a> del menú
-            y dar click en el botón <u>"Unirse"</u> de los en vivos que se presentan.</p>
+          <p class="has-text-justified">
+            Podrás acceder a todas las clases virtuales a través de esta
+            plataforma.
+          </p>
+          <p class="has-text-justified">
+            Unicamente tienes que acceder a la opción
+            <a routerLink="/clases-en-vivo">"Clases en vivo"</a> del menú y dar
+            click en el botón <u>"Unirse"</u> de los en vivos que se presentan.
+          </p>
           <figure class="image has-text-centered columns is-desktop">
-            <img class="column" src="/assets/images/MenuStream.PNG">
-            <img class="column" src="/assets/images/stream.png">
+            <img class="column" src="/assets/images/MenuStream.PNG" />
+            <img class="column" src="/assets/images/stream.png" />
           </figure>
           <p>
-            Durante el en vivo podrás preguntar a tu profesor sobre el tema de la clase, a través del chat en vivo que
-            aparece a un lado.
+            Durante el en vivo podrás preguntar a tu profesor sobre el tema de
+            la clase, a través del chat en vivo que aparece a un lado.
           </p>
-          <figure class="image ">
-
-            <img class="" style="margin: 5% auto;" src="/assets/images/chat.PNG">
+          <figure class="image">
+            <img
+              class=""
+              style="margin: 5% auto;"
+              src="/assets/images/chat.PNG"
+            />
           </figure>
         </div>
 
         <div class="clases-grabadas" style="margin: 5% auto;">
           <h4 class="subtitle is-3 has-text-centered">Clases grabadas</h4>
-          <p class="has-text-justified">Podrás acceder a todos los cursos virtuales a través de esta plataforma.</p>
-          <p class="has-text-justified">Unicamente tienes que acceder a la opción <a
-              routerLink='/clases-grabadas'>"Clases grabadas"</a> del menú
-            y dar click en el botón <u>"Ir al curso"</u> de las materias que se presentan.</p>
+          <p class="has-text-justified">
+            Podrás acceder a todos los cursos virtuales a través de esta
+            plataforma.
+          </p>
+          <p class="has-text-justified">
+            Unicamente tienes que acceder a la opción
+            <a routerLink="/clases-grabadas">"Clases grabadas"</a> del menú y
+            dar click en el botón <u>"Ir al curso"</u> de las materias que se
+            presentan.
+          </p>
           <figure class="image has-text-centered columns is-desktop">
-            <img class="column" src="/assets/images/MenuGrabadas.PNG">
-            <img class="column" src="/assets/images/tutorial.png">
+            <img class="column" src="/assets/images/MenuGrabadas.PNG" />
+            <img class="column" src="/assets/images/tutorial.png" />
           </figure>
           <p>
-            Aquí podrás acceder a toda la colección de videos sobre distintos temas del curso.
+            Aquí podrás acceder a toda la colección de videos sobre distintos
+            temas del curso.
           </p>
-          <figure class="image ">
-
-            <img class="" style="margin: auto;" src="/assets/images/Temas.PNG">
+          <figure class="image">
+            <img
+              class=""
+              style="margin: auto;"
+              src="/assets/images/Temas.PNG"
+            />
           </figure>
         </div>
 
         <div class="calendario" style="margin: 5% auto;">
           <h4 class="subtitle is-3 has-text-centered">Calendario</h4>
-          <p class="has-text-justified">La modalidad semipresencial por ahora no cubre la realización de exámenes en
-            línea.</p>
-          <p class="has-text-justified">Podrás verificar las fechas en las que te tendrás que presentar en la
-            institución para realizar las pruebas de evaluación correspondiente, solo tienes que dar click en la opción
-            <a routerLink='/clases-grabadas'>"Calendario"</a> del menú
-            .</p>
+          <p class="has-text-justified">
+            La modalidad semipresencial por ahora no cubre la realización de
+            exámenes en línea.
+          </p>
+          <p class="has-text-justified">
+            Podrás verificar las fechas en las que te tendrás que presentar en
+            la institución para realizar las pruebas de evaluación
+            correspondiente, solo tienes que dar click en la opción
+            <a routerLink="/clases-grabadas">"Calendario"</a> del menú .
+          </p>
           <figure class="image has-text-centered columns is-desktop">
-            <img class="column" src="/assets/images/MenuCalendario.PNG">
-            <img class="column" src="/assets/images/calendario.png">
+            <img class="column" src="/assets/images/MenuCalendario.PNG" />
+            <img class="column" src="/assets/images/calendario.png" />
           </figure>
-
         </div>
-
 
         <div class="tareas" style="margin: 5% auto;">
           <h4 class="subtitle is-3 has-text-centered">Tareas</h4>
-          <p class="has-text-justified">Estamos trabajando para brindarte un espacio en donde puedas entregar tus tareas
-            a través de la plataforma.</p>
-          <figure class="image ">
-
-            <img class="" style="margin: 5% auto; max-width: 80%;" src="/assets/images/work.png">
+          <p class="has-text-justified">
+            Estamos trabajando para brindarte un espacio en donde puedas
+            entregar tus tareas a través de la plataforma.
+          </p>
+          <figure class="image">
+            <img
+              class=""
+              style="margin: 5% auto; max-width: 80%;"
+              src="/assets/images/work.png"
+            />
           </figure>
-
         </div>
-
 
         <div class="Faqs" style="margin: 5% auto;">
           <h4 class="subtitle is-3 has-text-centered">Faqs</h4>
-          <p class="has-text-justified">Si tienes alguna pregunta, hemos creado para ti una sección especial en donde
-            encontrarás respuesta a las preguntas más comunes sobre la plataforma. Unicamente tienes que acceder a la
-            opción <a routerLink='/faqs'>"Faqs"</a> del menú
+          <p class="has-text-justified">
+            Si tienes alguna pregunta, hemos creado para ti una sección especial
+            en donde encontrarás respuesta a las preguntas más comunes sobre la
+            plataforma. Unicamente tienes que acceder a la opción
+            <a routerLink="/faqs">"Faqs"</a> del menú
           </p>
 
-          <figure class="image ">
-
-            <img class="" style="margin: 5% auto; max-width: 80%;" src="/assets/images/faq.png">
+          <figure class="image">
+            <img
+              class=""
+              style="margin: 5% auto; max-width: 80%;"
+              src="/assets/images/faq.png"
+            />
           </figure>
-
         </div>
-
-
-
       </section>
 
-      <footer class="modal-card-foot ">
-
-      </footer>
-
+      <footer class="modal-card-foot"></footer>
     </div>
   </div>
-
 </div>
