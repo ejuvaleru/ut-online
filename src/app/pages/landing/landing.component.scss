@@ -58,9 +58,7 @@ h1 {
     nav {
       height: 52px !important;
     }
-    .input {
-      display: none !important;
-    }
+    
   
     .navbar-item img {
       min-width: 100px !important;
@@ -81,13 +79,6 @@ h1 {
       width: 35px;
       height: 35px;
     }
-  
-    .textoLogo {
-      color: var(--primary-color);
-      font-weight: bold;
-      font-size: 20px;
-    }
-  
     .burger span {
       background-color: var(--font-color);
     }
