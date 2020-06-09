@@ -5,14 +5,15 @@
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
 
             <div class="field">
+                <label for="matricula">Matricula / ID Escolar</label>
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Matricula" formControlName="matricula" #matricula
-                        id="matricula">
+                    <input class="input" type="text" placeholder="Matricula / ID Escolar" formControlName="matricula"
+                        #matricula id="matricula">
                     <span class="icon is-small is-left">
                         <i class="fas fa-id-card"></i>
                     </span>
                     <span class="icon is-small is-right">
-                        <p *ngIf="loginForm?.value.matricula.length < 7">{{loginForm?.value.matricula.length}}</p>
+                        <p *ngIf="loginForm?.value.matricula.length < 7 && loginForm?.value.matricula.length > 0">{{loginForm?.value.matricula.length}}</p>
                         <i *ngIf="loginForm?.value.matricula.length > 7" class="fas fa-check"></i>
                     </span>
                 </p>
@@ -22,13 +23,14 @@
                 </div>
             </div>
             <div class="field">
+                <label for="pass">Contraseña</label>
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="password" placeholder="Contraseña" formControlName="contrasenia">
+                    <input class="input" type="password" placeholder="Contraseña" formControlName="contrasenia" id="pass">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
                     <span class="icon is-small is-right">
-                        <p *ngIf="loginForm?.value.contrasenia.length < 5">{{loginForm?.value.contrasenia.length}}</p>
+                        <p *ngIf="loginForm?.value.contrasenia.length < 5 && loginForm?.value.contrasenia.length > 0">{{loginForm?.value.contrasenia.length}}</p>
                         <i *ngIf="loginForm?.value.contrasenia.length > 5" class="fas fa-check"></i>
                     </span>
                 </p>

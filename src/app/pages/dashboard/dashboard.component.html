@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class=" has-text-centered">
+  <div class=" has-text-centered" *ngIf="user?.isStudent">
     <button class="button is-primary  is-large" (click)="openModal()">¿Que puedo hacer en la
       plataforma?</button>
 
