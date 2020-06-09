@@ -1,16 +1,16 @@
 <div class="container">
   <h1 class="title is-size-1 has-text-centered">UT-ONLINE</h1>
 
-  <h1 *ngIf="user && rol === 'isTeacher'" class="title is-3 has-text-centered">
+  <h1 *ngIf="user?.isTeacher" class="title is-3 has-text-centered">
     Bienvenido(a) Profesor
   </h1>
-  <h1 *ngIf="user && rol === 'isAdmin'" class="title is-3 has-text-centered">
+  <h1 *ngIf="user?.isAdmin" class="title is-3 has-text-centered">
     Bienvenido(a) Colaborador
   </h1>
 
   <div
     class="card is-primary"
-    *ngIf="(user && rol === 'isTeacher') || (user && rol === 'isAdmin')"
+    *ngIf="!user?.isStudent"
   >
     <div class="card-content has-text-centered">
       <p class="title">
@@ -57,10 +57,10 @@
       </div>
     </div>
   </div>
-  <div class="has-text-centered" *ngIf="user && rol === 'isStudent'">
-    <button class="button is-primary is-large" (click)="openModal()">
-      ¿Que puedo hacer en la plataforma?
-    </button>
+  <div class=" has-text-centered" *ngIf="user?.isStudent">
+    <button class="button is-primary  is-large" (click)="openModal()">¿Que puedo hacer en la
+      plataforma?</button>
+
   </div>
 
   <!--Modal de registro-->
