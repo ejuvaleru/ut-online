@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('usuario');
     console.log(this.isLogin);
     this.authService.onLogout();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/educacion_a_distancia');
   }
 
   setUpGreeting() {
