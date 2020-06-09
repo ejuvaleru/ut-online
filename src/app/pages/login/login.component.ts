@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
   setUpForm() {
     this.loginForm = this.fb.group({
-      matricula: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]],
+      matricula: ['', [Validators.required, Validators.minLength(8)]],
       contrasenia: ['', [Validators.required, Validators.minLength(6)]]
     });
   }

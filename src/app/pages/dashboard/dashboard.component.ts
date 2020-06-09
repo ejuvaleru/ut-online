@@ -9,17 +9,12 @@ export class DashboardComponent implements OnInit {
 
   user: any;
   modal = false;
-
-
+  
   constructor() { }
 
   ngOnInit(): void {
-
-    this.user = JSON.parse(localStorage.getItem('estudiante'));
-
+    this.user = JSON.parse(localStorage.getItem('usuario'));
   }
-
-
 
   openModal() {
     this.modal = true;

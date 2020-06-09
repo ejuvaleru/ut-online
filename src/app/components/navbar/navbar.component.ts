@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
 
   isLogin: Observable<boolean>;
   user: any;
+  rol: any;
 
   date: Date;
   time;
@@ -40,7 +41,9 @@ export class NavbarComponent implements OnInit {
       console.log('isLogin? ', res);
       this.setUpGreeting();
     });
-    this.user = JSON.parse(localStorage.getItem('estudiante'));
+    this.user = JSON.parse(localStorage.getItem('usuario'));
+    this.rol = this.authService.getTypeOfUser(this.user.schoolId, this.user.password);
+    console.log(this.rol, 'ROOOOL');
   }
 
   toggleNavbar() {
@@ -55,7 +58,7 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.toggleNavbarNo();
     localStorage.removeItem('isLogin');
-    localStorage.removeItem('estudiante');
+    localStorage.removeItem('usuario');
     console.log(this.isLogin);
     this.authService.onLogout();
     this.router.navigateByUrl('/login');

@@ -4,8 +4,8 @@
         <aside class="menu">
 
             <!-- Profile pic -->
-            <figure class="image is-128x128">
-                <img src="https://ps.w.org/ultimate-member/assets/icon-256x256.png?rev=2143339" alt="Profile picture">
+            <figure class="image is-128x128" *ngIf="user">
+                <img [src]="user.profilePic" alt="Profile picture">
             </figure>
             <div class="user has-text-centered has-text-white">
                 <p class="is-size-5"><span class="is-size-6">{{greeting}},</span> {{user?.userName}}</p>
@@ -17,24 +17,63 @@
 
             <!-- Menu options -->
             <ul class="menu-list">
-                <li><a [routerLink]="['dashboard']" routerLinkActive="active-link">
+                <li>
+                    <a [routerLink]="['dashboard']" routerLinkActive="active-link">
                         <span><i class="fas fa-tachometer-alt"></i></span> Dashboard
-                    </a></li>
-                <li><a [routerLink]="['clases-en-vivo']" routerLinkActive="active-link">
-                        <span><i class="fas fa-video"></i></span> Clases en vivo</a></li>
-                        <li><a [routerLink]="['clases-grabadas']" routerLinkActive="active-link">
+                    </a>
+                </li>
+                <!-- MENÚ DE USUARIO ESTUDIANTE -->
+                <div *ngIf="user && rol === 'isStudent'">
+                    <li>
+                        <a [routerLink]="['clases-en-vivo']" routerLinkActive="active-link">
+                            <span><i class="fas fa-video"></i></span> Clases en vivo</a>
+                    </li>
+                    <li><a [routerLink]="['clases-grabadas']" routerLinkActive="active-link">
                             <span><i class="fas fa-video"></i></span> Clases grabadas</a></li>
-                <li><a routerLink="/calendario" routerLinkActive="active-link">
-                        <span><i class="fas fa-calendar-alt"></i></span> Calendario</a></li>
-                <li><a routerLink="/">
-                        <span><i class="fas fa-pencil-alt"></i></span> Tareas</a></li>
-                <li><a routerLink="/faqs">
-                        <span><i class="fas fa-question"></i></span> Faqs</a></li>
+                    <li><a routerLink="/calendario" routerLinkActive="active-link">
+                            <span><i class="fas fa-calendar-alt"></i></span> Calendario</a></li>
+                    <li><a routerLink="/">
+                            <span><i class="fas fa-pencil-alt"></i></span> Tareas</a></li>
+                    <li><a routerLink="/faqs">
+                            <span><i class="fas fa-question"></i></span> Faqs</a></li>
+                </div>
+               
+                <!-- MENÚ DE USUARIO MAESTRO -->
+                <div *ngIf="user && rol === 'isTeacher'">
+                    <li>
+                        <a routerLink="/">
+                            <span><i class="fas fa-chalkboard"></i></span> Materias
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/">
+                            <span><i class="fas fa-video"></i></span> Transmitir clase
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/">
+                            <span><i class="fas fa-upload"></i></span> Subir clase
+                        </a>
+                    </li>
+                </div>
+                
+                <!-- MENÚ DE USUARIO DIRECTIVO -->
+                <div class="" *ngIf="user && rol === 'isAdmin'">
+                    <li>
+                        <a routerLink="/">
+                            <span><i class="fas fa-chalkboard-teacher"></i></span> Profesores
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/">
+                            <span><i class="fas fa-users"></i></span> Estudiantes
+                        </a>
+                    </li>
+                </div>
                 <li><a (click)="logOut()">
                         <span><i class="fas fa-sign-out-alt"></i></span> Cerrar sesión</a></li>
             </ul>
             <!-- Finish Menu options -->
-
         </aside>
     </div>
     <div class="column">

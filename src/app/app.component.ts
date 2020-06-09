@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   isLogin: Observable<boolean>;
 
   user: any;
+  rol: any;
   greeting = '';
 
   date: Date;
@@ -37,14 +38,18 @@ export class AppComponent implements OnInit {
     this.isLogin = this.authService.isLoggedIn();
     this.isLogin.subscribe(res => {
       console.log('isLogin? ', res);
-      this.user = JSON.parse(localStorage.getItem('estudiante'));
+      this.user = JSON.parse(localStorage.getItem('usuario'));
+      if (this.user) {
+        this.rol = this.authService.getTypeOfUser(this.user.schoolId, this.user.password);
+      }
+      console.log(this.rol, 'ROOOOL');
       this.setUpGreeting();
     });
   }
 
   logOut() {
     localStorage.removeItem('isLogin');
-    localStorage.removeItem('estudiante');
+    localStorage.removeItem('usuario');
     console.log(this.isLogin);
     this.authService.onLogout();
     this.router.navigateByUrl('/login');

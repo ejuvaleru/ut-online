@@ -15,36 +15,72 @@
 
     <div class="navbar-menu" #navbarItems>
         <div class="navbar-start">
-            <p class="navbar-item">
-                {{greeting}} {{user.userName}}
-            </p>
+            <!-- MOBILE MENU OPCIONES ESTUDIANTE -->
+            <div *ngIf="user && rol === 'isStudent'">
+                <p class="navbar-item">
+                    {{greeting}} {{user.userName}}
+                </p>
 
-            <a class="navbar-item" [routerLink]="['dashboard']" routerLinkActive="active-link"
-                (click)="toggleNavbarNo()">
-                <span><i class="fas fa-tachometer-alt"></i></span> Dashboard
-            </a>
+                <a class="navbar-item" [routerLink]="['dashboard']" routerLinkActive="active-link"
+                    (click)="toggleNavbarNo()">
+                    <span><i class="fas fa-tachometer-alt"></i></span> Dashboard
+                </a>
 
-            <a class="navbar-item" [routerLink]="['clases-en-vivo']" routerLinkActive="active-link"
-                (click)="toggleNavbarNo()">
-                <span><i class="fas fa-video"></i></span> Clases en vivo
-            </a>
+                <a class="navbar-item" [routerLink]="['clases-en-vivo']" routerLinkActive="active-link"
+                    (click)="toggleNavbarNo()">
+                    <span><i class="fas fa-video"></i></span> Clases en vivo
+                </a>
 
-            <a class="navbar-item" [routerLink]="['clases-grabadas']" routerLinkActive="active-link"
-            (click)="toggleNavbarNo()">
-            <span><i class="fas fa-video"></i></span> Clases grabadas
-        </a>
+                <a class="navbar-item" [routerLink]="['clases-grabadas']" routerLinkActive="active-link"
+                    (click)="toggleNavbarNo()">
+                    <span><i class="fas fa-video"></i></span> Clases grabadas
+                </a>
 
-            <a class="navbar-item" routerLink="/calendario" (click)="toggleNavbarNo()">
-                <span><i class="fas fa-calendar-alt"></i></span> Calendario
-            </a>
+                <a class="navbar-item" routerLink="/calendario" (click)="toggleNavbarNo()">
+                    <span><i class="fas fa-calendar-alt"></i></span> Calendario
+                </a>
 
-            <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
-                <span><i class="fas fa-pencil-alt"></i></span> Tareas
-            </a>
-            <a class="navbar-item" routerLink="/faqs" (click)="toggleNavbarNo()">
-                <span><i class="fas fa-question"></i></span> Faqs
-            </a>
+                <a class="navbar-item" routerLink="/clases-en-vivo" (click)="toggleNavbarNo()">
+                    <span><i class="fas fa-pencil-alt"></i></span> Tareas
+                </a>
+                <a class="navbar-item" routerLink="/faqs" (click)="toggleNavbarNo()">
+                    <span><i class="fas fa-question"></i></span> Faqs
+                </a>
 
+            </div>
+
+            <!-- MOBILE MENU OPCIONES PROFESOR -->
+            <div *ngIf="user && rol === 'isTeacher'">
+                <p class="navbar-item">
+                    {{greeting}} profesor {{user.userName}}
+                </p>
+                <a class="navbar-item" (click)="toggleNavbarNo()" routerLink="/">
+                    <span><i class="fas fa-chalkboard"></i></span> Materias
+                </a>
+
+                <a class="navbar-item" (click)="toggleNavbarNo()" routerLink="/">
+                    <span><i class="fas fa-video"></i></span> Transmitir clase
+                </a>
+
+                <a class="navbar-item" (click)="toggleNavbarNo()" routerLink="/">
+                    <span><i class="fas fa-upload"></i></span> Subir clase
+                </a>
+            </div>
+
+            <!-- MOBILE MENU OPCIONES DIRECTIVO -->
+            <div *ngIf="user && rol === 'isAdmin'">
+                <p class="navbar-item">
+                    {{greeting}} {{user.userName}}
+                </p>
+                <a class="navbar-item" (click)="toggleNavbarNo()" routerLink="/" routerLink="/">
+                    <span><i class="fas fa-chalkboard-teacher"></i></span> Profesores
+                </a>
+
+                <a class="navbar-item" (click)="toggleNavbarNo()" routerLink="/" routerLink="/">
+                    <span><i class="fas fa-users"></i></span> Estudiantes
+                </a>
+
+            </div>
         </div>
 
         <div class="navbar-end">
