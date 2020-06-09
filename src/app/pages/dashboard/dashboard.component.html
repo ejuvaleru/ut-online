@@ -22,7 +22,7 @@
   <div class="columns is-desktop">
     <div
       class="card column is-two-fifths is-primary"
-      *ngIf="user && rol === 'isStudent'"
+      *ngIf="user?.isStudent"
     >
       <div class="card-content has-text-centered">
         <p class="title">
@@ -39,7 +39,7 @@
 
     <div
       class="card column is-two-fifths is-primary"
-      *ngIf="user && rol === 'isStudent'"
+      *ngIf="user?.isStudent"
     >
       <div class="card-content has-text-centered">
         <p class="title">
