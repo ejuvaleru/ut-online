@@ -7,10 +7,11 @@ import { StreamComponent } from './pages/stream/stream.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
 import { ClasesProgramadasComponent } from './pages/clases-programadas/clases-programadas.component';
 import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: '', component: LandingComponent },
   { path: 'dashboard', component: DashboardComponent },
   {
     path: 'clases-en-vivo', children: [
@@ -19,7 +20,7 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'login', component: LoginComponent },
+  { path: 'educacion_a_distancia', component: LoginComponent },
   { path: 'faqs', component: FaqsComponent },
   {path: 'calendario', component: DashboardComponent},
   {

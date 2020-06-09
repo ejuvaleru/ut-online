@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FaqsComponent } from './pages/faqs/faqs.component';
 import { ClasesProgramadasComponent } from './pages/clases-programadas/clases-programadas.component';
 import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.compo
     StreamComponent,
     FaqsComponent,
     ClasesProgramadasComponent,
-    VideoGrabadoComponent
+    VideoGrabadoComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

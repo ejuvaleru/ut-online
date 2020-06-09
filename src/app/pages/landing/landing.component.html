@@ -1,0 +1,189 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item logo">
+      <img src="assets/images/ut-logo.png" alt="UT Cancún logo" />
+    </a>
+
+    <a
+      (click)="toggleNavbar()"
+      role="button"
+      #navBurger
+      class="navbar-burger burger"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbarBasicExample"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu" #navMenu>
+    <div class="navbar-end">
+      <a class="navbar-item" routerLink="/" (click)="toggleNavbar()">
+        Inicio
+      </a>
+
+      <a class="navbar-item" (click)="toggleNavbar()">
+        Carreras
+      </a>
+
+      <a
+        class="navbar-item"
+        routerLink="/educacion_a_distancia"
+        (click)="toggleNavbar()"
+      >
+        Clases Online
+      </a>
+
+      <a class="navbar-item" (click)="toggleNavbar()">
+        Servicios estudiantiles
+      </a>
+      <a class="navbar-item" (click)="toggleNavbar()">
+        Contactos
+      </a>
+      <div class="navbar-item">
+        <button
+          class="button is-primary is-fullwidth"
+          (click)="cambio()"
+          *ngIf="!darkMode"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+        <button
+          class="button is-primary is-fullwidth"
+          (click)="cambio()"
+          *ngIf="darkMode"
+        >
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero is-link is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <p class="title is-1">
+        Nueva modalidad semipresencial
+      </p>
+      <p class="subtitle is-5">
+        Adquiere nuevas habilidades con las clases online que ofrecemos para ti.
+      </p>
+      <button class="button is-outlined">INSCRIBIRME</button>
+    </div>
+  </div>
+</section>
+
+<section class="section2">
+  <div class="container">
+    <h2 class="title is-3">Aprendizaje para todos en cualquier lugar</h2>
+    <hr />
+    <div class="columns is-desktop">
+      <div class="column">
+        <img
+          src="assets/images/task.png"
+          alt="Imagen tareas online"
+          style="height: 150px;"
+          class="mt-6"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="assets/images/remotly.png"
+          alt="Imagen tareas online"
+          style="height: 150px;"
+          class="mt-6"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="assets/images/programmer.png"
+          alt="Imagen tareas online"
+          style="height: 150px;"
+          class="mt-6"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="noticias">
+  <div class="container">
+    <h2 class="title is-3">Últimas noticias</h2>
+
+    <div class="grid">
+      <div class="cards">
+        <div class="portada">
+          <img src="assets/images/card1.jpg" alt="" />
+        </div>
+        <div class="info">
+          <h3 class="title is-6">
+            Nueva modalidad semipresencial será atendida.
+          </h3>
+
+          <div>
+            <p>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.It is a
+              long established fact that a reader will be distracted by the...
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="portada">
+          <img src="assets/images/card2.jpg" alt="" />
+        </div>
+        <div class="info">
+          <h3 class="title is-6">
+            T.S.U. en Aviación agregando al catálogo que orece UTC
+          </h3>
+
+          <div>
+            <p>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.It is a
+              long established fact that a reader will be distracted by the...
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="portada">
+          <img src="assets/images/card3.jpg" alt="" />
+        </div>
+        <div class="info">
+          <h3 class="title is-6">
+            La UTC salva el mundo sembrando árboles pero, ¿y los de TIC?
+          </h3>
+
+          <div>
+            <p>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.It is a
+              long established fact that a reader will be distracted by the...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Universidad Tecnológico de Cancún 
+    </p>
+    <p>
+        Carretera Cancún-Aeropuerto, Km. 11.5
+      S.M. 299, Mz. 5, Lt 1, 77565 Cancùn, Q.R. Teléfono: 998 881 1900
+    </p>
+    <p class="end">Copyright  @ 2020 Universidad Tecnológico de Cancún</p>
+  </div>
+</footer>
