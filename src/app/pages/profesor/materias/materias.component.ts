@@ -23,7 +23,7 @@ export class MateriasComponent implements OnInit {
   ngOnInit() {
     this.afAuth.authState.subscribe(res => {
       this.profesorID = res.uid;
-      this.afs.collection('usuarios').doc(this.profesorID).valueChanges().subscribe(res => {
+      this.afs.collection('usuarios').doc(this.profesorID).valueChanges().subscribe((res: any) => {
         res.grupoID.forEach(e => {
           this.getGruposDelProfesor(e);
           console.log(this.grupos);
