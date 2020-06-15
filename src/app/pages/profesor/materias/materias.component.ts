@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Profesor } from 'src/app/shared/models/profesor.model';
 
 @Component({
   selector: 'app-materias',
@@ -13,7 +14,7 @@ export class MateriasComponent implements OnInit {
   materias = [];
   grupos = [];
   profesorID: string = '';
-  profesorReference: ProfesorI;
+  profesorReference: Profesor;
 
   constructor(
     private afs: AngularFirestore,
@@ -23,6 +24,7 @@ export class MateriasComponent implements OnInit {
   ngOnInit() {
     this.afAuth.authState.subscribe(res => {
       this.profesorID = res.uid;
+<<<<<<< HEAD
       this.afs.collection('usuarios').doc(this.profesorID).valueChanges().subscribe((res: any) => {
         res.grupoID.forEach(e => {
           this.getGruposDelProfesor(e);
@@ -30,6 +32,13 @@ export class MateriasComponent implements OnInit {
         });
         res.materiaID.forEach(e => {
           this.getMateriasDelProfesor(e);
+=======
+      this.afs.collection('materias', ref =>ref.where('profesorId', '==', this.profesorID) ).valueChanges()
+      .subscribe((res: any) => {
+        console.log(res)
+        res.forEach(e => {
+          this.materias.push(e);
+>>>>>>> bdfa524dc1ea7a0ad892d3594930b9e53202b46c
         });
       }
       );
@@ -49,10 +58,4 @@ export class MateriasComponent implements OnInit {
   }
 
 
-}
-
-export class ProfesorI {
-  materiaID: [];
-  grupoID: [];
-  userName: string;
 }
