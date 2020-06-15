@@ -18,6 +18,13 @@ import { ClasesProgramadasComponent } from './pages/clases-programadas/clases-pr
 import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
+// Firebase
+import {AngularFireModule} from '@angular/fire';
+import { AngularFireAuthModule } from "@angular/fire/auth";
+
+import { environment } from 'src/environments/environment';
+import { MateriasComponent } from './pages/profesor/materias/materias.component';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +37,13 @@ import { LandingComponent } from './pages/landing/landing.component';
     FaqsComponent,
     ClasesProgramadasComponent,
     VideoGrabadoComponent,
-    LandingComponent
+    LandingComponent,
+    MateriasComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

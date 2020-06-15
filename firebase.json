@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "ut-online",
+      "public": "dist/ut-online",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

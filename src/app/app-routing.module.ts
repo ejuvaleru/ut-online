@@ -8,6 +8,7 @@ import { FaqsComponent } from './pages/faqs/faqs.component';
 import { ClasesProgramadasComponent } from './pages/clases-programadas/clases-programadas.component';
 import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { MateriasComponent } from './pages/profesor/materias/materias.component';
 
 
 const routes: Routes = [
@@ -19,15 +20,16 @@ const routes: Routes = [
       { path: ':id', component: StreamComponent }
     ]
   },
-
+  { path: 'materias', component: MateriasComponent },
   { path: 'educacion_a_distancia', component: LoginComponent },
   { path: 'faqs', component: FaqsComponent },
-  {path: 'calendario', component: DashboardComponent},
+  { path: 'calendario', component: DashboardComponent },
   {
     path: 'clases-grabadas', children: [
-      { path: '', component: ClasesProgramadasComponent},
-      {path: ':id', component: VideoGrabadoComponent}
-    ] },
+      { path: '', component: ClasesProgramadasComponent },
+      { path: ':id', component: VideoGrabadoComponent }
+    ]
+  },
 ];
 
 @NgModule({

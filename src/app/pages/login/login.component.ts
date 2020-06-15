@@ -29,14 +29,16 @@ export class LoginComponent implements OnInit {
     const matricula = this.loginForm.get('matricula').value;
     const pass = this.loginForm.get('contrasenia').value;
 
-    const res = this.authService.logIn(matricula, pass);
-
-    if (res.code === 200) {
-      this.login();
-      this.generateToast(res.message, res.code);
-    } else {
-      this.generateToast(res.message, res.code);
-    }
+    const result = this.authService.logIn(matricula, pass);
+    result.then(res => {
+      console.log(res);
+      if (res.user) {
+        this.login();
+        this.generateToast('Inicio de sesión exitoso.', 200);
+      }
+    }).catch(e => {
+      this.generateToast('Usuario o contraseña incorrectos.', 400);
+    });
   }
 
   login() {

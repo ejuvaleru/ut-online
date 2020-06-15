@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ut-online-9dab7": {
+      "hosting": {
+        "ut-online": [
+          "ut-online-9dab7"
+        ]
+      }
+    }
+  }
+}
