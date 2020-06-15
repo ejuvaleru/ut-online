@@ -4,16 +4,29 @@
         <thead>
             <th>Materia</th>
             <th>Horario</th>
+            <th>Grupos</th>
         </thead>
         <tbody>
           <tr *ngFor="let m of materias">
             <td>{{m.nombre}}</td>
-            <td>{{m.horario}}</td>
+            <td >
+              <p *ngFor= "let h of m.horario">
+                {{h.dia}}--{{h.hora}}
+              </p>
+             
+            </td>
+            <td >
+              <p *ngFor= "let g of m.grupos">
+                {{g.nombre}}
+              </p>
+              
+            </td>
           </tr>
+          
         </tbody>
       </table>
       <h1 class="title">Grupos</h1>
-      <table class="table is-fullwidth">
+      <!-- <table class="table is-fullwidth">
           <thead>
               <th>Grupos</th>
           </thead>
@@ -22,5 +35,5 @@
               <td>{{g.nombre}}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
 </div>
