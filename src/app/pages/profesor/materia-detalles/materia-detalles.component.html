@@ -53,7 +53,7 @@
       <p>{{ t.instrucciones }}</p>
       <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega: </h2>
       <p *ngIf="t.fechaEntrega">{{ t.fechaEntrega.toDate() | date }}</p>
-      <button class="button is-primary has-text-right">Detalles</button>
+      <button class="button is-primary has-text-right" routerLink="/tarea/{{t.id}}">Detalles</button>
     </div>
   </div>
 </div>

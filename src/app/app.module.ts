@@ -27,6 +27,7 @@ import { MateriasComponent } from './pages/profesor/materias/materias.component'
 import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/materia-detalles.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { SubirClaseComponent } from './pages/profesor/subir-clase/subir-clase.component';
+import { TareaDetallesComponent } from './pages/profesor/tarea-detalles/tarea-detalles.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SubirClaseComponent } from './pages/profesor/subir-clase/subir-clase.co
     MateriasComponent,
     MateriaDetallesComponent,
     FileUploadComponent,
-    SubirClaseComponent
+    SubirClaseComponent,
+    TareaDetallesComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { MateriasComponent } from './pages/profesor/materias/materias.component';
 import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/materia-detalles.component';
 import { SubirClaseComponent } from './pages/profesor/subir-clase/subir-clase.component';
+import { TareaDetallesComponent } from './pages/profesor/tarea-detalles/tarea-detalles.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,9 @@ const routes: Routes = [
       {path: '', component: MateriasComponent},
       {path: ':id', component: MateriaDetallesComponent}
     ]
+  },
+  {
+    path: 'tarea/:id', component: TareaDetallesComponent
   },
   { path: 'subir-clase', component: SubirClaseComponent },
   { path: 'educacion_a_distancia', component: LoginComponent },

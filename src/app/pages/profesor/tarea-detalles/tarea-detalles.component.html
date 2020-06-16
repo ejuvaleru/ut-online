@@ -1,0 +1,47 @@
+<div class="container">
+  <h1 class="title is-1 has-text-centered">{{ tarea.nombre }}</h1>
+  <button class="is-primary button" style="float: right;">Editar</button>
+      <h2 class="title is-3 ">Instrucciones: </h2>
+      <p>{{ tarea.instrucciones }}</p>
+      <h2 class="title is-3" style="margin-top: 10px;">Fecha de entrega: </h2>
+      <p *ngIf="tarea.fechaEntrega">{{ tarea.fechaEntrega.toDate() | date }}</p>
+
+
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-4">Material de apoyo</h1>
+          <p style="margin-bottom: 20px;">
+            Sube material de apoyo para la tarea, solo se permite
+            un archivo, a la derecha puedes visualizar el archivo actual.
+          </p>
+          <app-file-upload
+            [coleccion]="coleccion"
+            [doc]="id"
+          ></app-file-upload>
+        </div>
+        <div class="column" >
+          <embed
+            [src]="safeUrl(tarea.archivo)"
+            type="application/pdf"
+            width="100%"
+            height="600px"
+          />
+          <a [href]="safeUrl(tarea.archivo)">Archivo</a>
+        </div>
+      </div>
+
+
+      <div class="entregas">
+        <h1 class="title is-1 has-text-centered">Entregas</h1>
+        <div *ngFor="let e of entregas" class="entrega">
+          <h2 class="title is-4">{{ e.alumno.nombre}}--{{e.alumno.matricula}}</h2>
+          <h2 class="title is-6 ">Comentarios: </h2>
+          <p>{{ e.comentarios }}</p>
+          <h2 class="title is-6" style="margin-top: 10px;">Grupo: </h2>
+          <p>{{ e.alumno.grupo}}</p>
+          <h2 class="title is-6" style="margin-top: 10px;">Calificación: </h2>
+          <p>{{ e.calificacion}}</p>
+          <button class="button is-primary has-text-right" routerLink="/">Calificar</button>
+        </div>
+      </div>
+</div>
