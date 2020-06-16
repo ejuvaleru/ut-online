@@ -24,21 +24,11 @@ export class MateriasComponent implements OnInit {
   ngOnInit() {
     this.afAuth.authState.subscribe(res => {
       this.profesorID = res.uid;
-<<<<<<< HEAD
-      this.afs.collection('usuarios').doc(this.profesorID).valueChanges().subscribe((res: any) => {
-        res.grupoID.forEach(e => {
-          this.getGruposDelProfesor(e);
-          console.log(this.grupos);
-        });
-        res.materiaID.forEach(e => {
-          this.getMateriasDelProfesor(e);
-=======
       this.afs.collection('materias', ref =>ref.where('profesorId', '==', this.profesorID) ).valueChanges()
       .subscribe((res: any) => {
         console.log(res)
         res.forEach(e => {
           this.materias.push(e);
->>>>>>> bdfa524dc1ea7a0ad892d3594930b9e53202b46c
         });
       }
       );

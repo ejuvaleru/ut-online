@@ -48,6 +48,9 @@ time {
 .navbar-item {
   color: var(--font-color);
 }
+.label{
+  color: var(--font-color);
+}
 .toast-center-center {
   top: 50%;
   left: 50%;

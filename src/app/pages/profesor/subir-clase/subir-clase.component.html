@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="container-flex">
+        <div class="form-container">
+            <h1 class="title">Agregar vídeo grabado</h1>
+
+            <form [formGroup]="formSubirClase">
+                <div class="field">
+                    <label class="label">Título</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Título del vídeo" formControlName="titulo">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Enlace</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Enlace del vídeo a YouTube"
+                            formControlName="enlace">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="mat" class="label">Seleccionar materia:</label>
+                    <div class="select" name="mat" id="mat">
+                        <select formControlName="materia" >
+                            <option *ngFor="let m of materiasParaElForm" [value]="m.id">{{m.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="button is-primary is-fullwidth" (click)="onSubmit()"
+                    [disabled]="!formSubirClase.valid">Agregar</button>
+            </form>
+        </div>
+        <div class="container-table">
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th><abbr title="Título">Título</abbr></th>
+                        <th><abbr title="Materia">Materia</abbr></th>
+                        <th><abbr title="Opciones">Opciones</abbr></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of clasesGrabadas">
+                        <th>{{ c.titulo }}</th>
+                        <th>{{ materia }}</th>
+                        <td>
+                            <button class="button is-primary">
+                                <span>Editar</span>
+                                <span><i class="fas fa-edit ml"></i></span>
+                            </button>
+                            <button class="button is-danger" >
+                                Eliminar
+                                <span><i class="fas fa-trash ml"></i></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
