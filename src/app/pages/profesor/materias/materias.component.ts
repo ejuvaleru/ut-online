@@ -26,6 +26,7 @@ export class MateriasComponent implements OnInit {
       this.profesorID = res.uid;
       this.afs.collection('materias', ref =>ref.where('profesorId', '==', this.profesorID) ).valueChanges()
       .subscribe((res: any) => {
+        this.materias = [];
         console.log(res)
         res.forEach(e => {
           this.materias.push(e);

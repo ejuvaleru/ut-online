@@ -24,6 +24,8 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { environment } from 'src/environments/environment';
 import { MateriasComponent } from './pages/profesor/materias/materias.component';
+import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/materia-detalles.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { MateriasComponent } from './pages/profesor/materias/materias.component'
     ClasesProgramadasComponent,
     VideoGrabadoComponent,
     LandingComponent,
-    MateriasComponent
+    MateriasComponent,
+    MateriaDetallesComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

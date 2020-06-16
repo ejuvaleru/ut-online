@@ -1,0 +1,110 @@
+<div class="container">
+    <h1 class="title is-1 has-text-centered">{{ materia.nombre }}</h1>
+    <h2 class="title is-5" style="margin-top: 100px;">Horario de la materia asignada</h2>
+  <table class="table is-fullwidth "  >
+    <thead>
+      <th>Dia</th>
+      <th>Hora</th>
+      <th>Grupo</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let h of materia.horario">
+        <td>{{ h.dia }}</td>
+        <td>
+          {{ h.hora }}
+        </td>
+        <td>
+          {{ h.grupo }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="documetacion" style="margin-top: 100px;">
+    <div class="columns">
+      <div class="column">
+        <h1 class="title is-4">Documentación de la materia</h1>
+        <p style="margin-bottom: 20px;">
+          Sube la información de la ficha técnica de la materia, solo se permite
+          un archivo, a la derecha puedes visualizar el archivo actual.
+        </p>
+        <app-file-upload
+          [coleccion]="coleccion.nombre"
+          [doc]="materia.id"
+        ></app-file-upload>
+      </div>
+      <div class="column">
+        <embed
+          [src]="safeUrl(materia.archivo)"
+          type="application/pdf"
+          width="100%"
+          height="600px"
+        />
+        <a [href]="safeUrl(materia.archivo)">Archivo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tareas">
+    <h1 class="title is-1 has-text-centered">Tareas</h1>
+    <button class="button is-primary is-medium" (click)="toggleModal()">Agregar tarea</button>
+    <div *ngFor="let t of tareas" class="tarea">
+      <h2 class="title is-4">{{ t.nombre }}</h2>
+      <h2 class="title is-6 ">Instrucciones: </h2>
+      <p>{{ t.instrucciones }}</p>
+      <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega: </h2>
+      <p *ngIf="t.fechaEntrega">{{ t.fechaEntrega.toDate() | date }}</p>
+      <button class="button is-primary has-text-right">Detalles</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal is-active" *ngIf="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Agregar Tarea</p>
+        <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+            <label class="label">Nombre</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Text input">
+            </div>
+          </div>
+
+          
+          <div class="field">
+            <label class="label">Intrucciones de la tarea</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Instrucciones"></textarea>
+            </div>
+          </div>
+
+
+
+          <div class="field">
+            <label class="label" >Fecha de entrega</label>
+            <div class="control">
+                <input type="date" 
+                value="2020-06-15"
+                min="2020-06-16" max="2020-12-31">
+            </div>
+          </div>  
+          
+         
+
+
+          
+          <div class="field is-grouped mt-5">
+            <div class="control">
+              <button class="button is-link">Submit</button>
+            </div>
+            <div class="control">
+              <button class="button is-link is-light">Cancel</button>
+            </div>
+          </div>
+      </section>
+    </div>
+  </div>

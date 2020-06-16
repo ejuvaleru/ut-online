@@ -5,4 +5,5 @@ export interface Tarea {
     nombre: string;
     instrucciones: string;
     materiaId: string;   
+    fechaEntrega: Date; 
 }

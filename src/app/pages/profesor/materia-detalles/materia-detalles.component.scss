@@ -3,10 +3,22 @@
     min-height: 100vh;
 }
 
+.tareas {
+    padding-top: 10%;
+    
+
+    .tarea{
+        display: block;
+        margin-top: 50px;
+        border: 2px solid var(--font-color);
+        padding: 20px;
+    }
+
+}
+
 table{
     background-color: var(--background);
     color: var(--font-color);
-    font-size: 20px;
 }
 th{
     color: var(--font-color)!important;

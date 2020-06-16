@@ -9,6 +9,7 @@ import { ClasesProgramadasComponent } from './pages/clases-programadas/clases-pr
 import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { MateriasComponent } from './pages/profesor/materias/materias.component';
+import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/materia-detalles.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,12 @@ const routes: Routes = [
       { path: ':id', component: StreamComponent }
     ]
   },
-  { path: 'materias', component: MateriasComponent },
+  { path: 'materias', children: [
+      {path: '', component: MateriasComponent},
+      {path: ':id', component: MateriaDetallesComponent}
+    ]
+  },
+  
   { path: 'educacion_a_distancia', component: LoginComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'calendario', component: DashboardComponent },
