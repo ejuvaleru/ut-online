@@ -10,6 +10,7 @@ import { VideoGrabadoComponent } from './pages/video-grabado/video-grabado.compo
 import { LandingComponent } from './pages/landing/landing.component';
 import { MateriasComponent } from './pages/profesor/materias/materias.component';
 import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/materia-detalles.component';
+import { SubirClaseComponent } from './pages/profesor/subir-clase/subir-clase.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
       {path: ':id', component: MateriaDetallesComponent}
     ]
   },
-  
+  { path: 'subir-clase', component: SubirClaseComponent },
   { path: 'educacion_a_distancia', component: LoginComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'calendario', component: DashboardComponent },

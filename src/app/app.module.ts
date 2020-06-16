@@ -26,6 +26,7 @@ import { environment } from 'src/environments/environment';
 import { MateriasComponent } from './pages/profesor/materias/materias.component';
 import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/materia-detalles.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { SubirClaseComponent } from './pages/profesor/subir-clase/subir-clase.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     LandingComponent,
     MateriasComponent,
     MateriaDetallesComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    SubirClaseComponent
   ],
   imports: [
     BrowserModule,
