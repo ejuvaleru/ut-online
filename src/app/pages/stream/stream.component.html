@@ -1,37 +1,56 @@
 <div class="container">
-    <div class="encabezado">
-        <h1 class="title is-1 ">{{subjectElement.name}}</h1>
-        <button class="button is-primary is-medium is-fullwidth-mobile" (click)="openAlert()">Volver</button>
+  <div class="encabezado">
+    <h1 class="title is-1">{{ materia.nombre }}</h1>
+    <button
+      class="button is-primary is-medium is-fullwidth-mobile"
+      (click)="openAlert()"
+    >
+      Volver
+    </button>
+  </div>
+  <div class="columns">
+    <div class="column is-12-mobile is-8-desktop is-12-tablet">
+      <div class="subject-box">
+        <iframe allow="camera; microphone" [src]="safeUrl(materia.id)"></iframe>
+
+        <!-- <div class="titles">
+          <h2>
+            <span class="title is-5">{{ subjectElement.teacher }}</span>
+          </h2>
+          <h3>{{ subjectElement.abstract }}</h3>
+        </div> -->
+      </div>
     </div>
-    <div class="columns">
-        <div class="column is-12-mobile is-8-desktop is-12-tablet">
-            <div class="subject-box">
-                <video controls autoplay="true">
-                    <source src="{{subjectElement.video}}" type="video/mp4">
-                </video>
 
-                <div class="titles">
-                    <h2> <span class="title is-5">{{subjectElement.teacher}}</span></h2>
-                    <h3>{{subjectElement.abstract}}</h3>
-                </div>
-            </div>
-
-
+    <div class="column is-4 is-12-tablet is-4-desktop">
+      <div class="chat">
+        <h3 class="subtitle is-5 has-text-centered is-uppercase">
+          Chat del stream
+        </h3>
+        <div *ngFor="let m of chat">
+          <p>
+            <strong>{{ m.usuario }}: </strong> {{ m.mensaje }}
+          </p>
         </div>
-
-        <div class="column is-4 is-12-tablet is-4-desktop">
-            <div class="chat">
-                <h3 class="subtitle is-5 has-text-centered is-uppercase"> Chat del stream</h3>
-                <div *ngFor="let m of chat">
-                    <p> <strong>{{m.usuario}}: </strong> {{m.mensaje}} </p>
-                </div>
-            </div>
-            <div class="mensaje">
-                <input class="input" type="text" name='mensaje' placeholder="Mensaje" #nuevoMensaje
-                    (keyup.enter)="sendMessage(nuevoMensaje.value); nuevoMensaje.value=''">
-                <button class="button is-primary" (click)="sendMessage(nuevoMensaje.value); nuevoMensaje.value=''">
-                    Enviar</button>
-            </div>
-        </div>
+      </div>
+      <div class="mensaje">
+        <input
+          class="input"
+          type="text"
+          name="mensaje"
+          placeholder="Mensaje"
+          #nuevoMensaje
+          (keyup.enter)="
+            sendMessage(nuevoMensaje.value); nuevoMensaje.value = ''
+          "
+        />
+        <button
+          class="button is-primary"
+          (click)="sendMessage(nuevoMensaje.value); nuevoMensaje.value = ''"
+        >
+          Enviar
+        </button>
+      </div>
     </div>
+  </div>
 </div>

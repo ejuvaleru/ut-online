@@ -1,6 +1,6 @@
-import { Entrega } from './entrega.model';
 
-export interface Tarea {
+
+export interface Proyecto {
     id: string;
     nombre: string;
     instrucciones: string;

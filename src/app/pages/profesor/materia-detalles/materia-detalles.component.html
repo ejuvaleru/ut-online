@@ -1,7 +1,9 @@
 <div class="container">
-    <h1 class="title is-1 has-text-centered">{{ materia.nombre }}</h1>
-    <h2 class="title is-5" style="margin-top: 100px;">Horario de la materia asignada</h2>
-  <table class="table is-fullwidth "  >
+  <h1 class="title is-1 has-text-centered">{{ materia.nombre }}</h1>
+  <h2 class="title is-5" style="margin-top: 100px;">
+    Horario de la materia asignada
+  </h2>
+  <table class="table is-fullwidth">
     <thead>
       <th>Dia</th>
       <th>Hora</th>
@@ -44,67 +46,168 @@
     </div>
   </div>
 
-  <div class="tareas">
+  <div class="tabs is-large">
+    <ul>
+      <li [class.is-active]="active === true">
+        <a (click)="toggleTabs()">Tareas</a>
+      </li>
+      <li [class.is-active]="active === false">
+        <a (click)="toggleTabs()">Proyectos</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tareas" *ngIf = "active === true">
     <h1 class="title is-1 has-text-centered">Tareas</h1>
-    <button class="button is-primary is-medium" (click)="toggleModal()">Agregar tarea</button>
+    <button class="button is-primary is-medium" (click)="toggleModal()">
+      Agregar tarea
+    </button>
     <div *ngFor="let t of tareas" class="tarea">
       <h2 class="title is-4">{{ t.nombre }}</h2>
-      <h2 class="title is-6 ">Instrucciones: </h2>
+      <h2 class="title is-6">Instrucciones:</h2>
       <p>{{ t.instrucciones }}</p>
-      <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega: </h2>
+      <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega:</h2>
       <p *ngIf="t.fechaEntrega">{{ t.fechaEntrega.toDate() | date }}</p>
-      <button class="button is-primary has-text-right" routerLink="/tarea/{{t.id}}">Detalles</button>
+      <button
+        class="button is-primary has-text-right"
+        routerLink="/tarea/{{ t.id }}"
+      >
+        Detalles
+      </button>
+    </div>
+  </div>
+
+
+
+  <div class="proyectos" *ngIf = "active === false">
+    <h1 class="title is-1 has-text-centered">Proyectos</h1>
+    <button class="button is-primary is-medium" (click)="toggleModalProyectos()">
+      Agregar Proyecto
+    </button>
+    <div *ngFor="let p of proyectos" class="proyecto">
+      <h2 class="title is-4">{{ p.nombre }}</h2>
+      <h2 class="title is-6">Instrucciones:</h2>
+      <p>{{ p.instrucciones }}</p>
+      <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega:</h2>
+      <p *ngIf="p.fechaEntrega">{{ p.fechaEntrega.toDate() | date }}</p>
+      <button
+        class="button is-primary has-text-right"
+        routerLink="/proyecto/{{ p.id }}"
+      >
+        Detalles
+      </button>
     </div>
   </div>
 </div>
 
 
+<!--FORMULARIO DE TAREAS-->
 <div class="modal is-active" *ngIf="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Agregar Tarea</p>
-        <button class="delete" aria-label="close" (click)="toggleModal()"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="field">
-            <label class="label">Nombre</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Text input">
-            </div>
-          </div>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Agregar Tarea</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="toggleModal()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
 
-          
-          <div class="field">
-            <label class="label">Intrucciones de la tarea</label>
-            <div class="control">
-              <textarea class="textarea" placeholder="Instrucciones"></textarea>
-            </div>
-          </div>
+      <form [formGroup]="formTarea">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input"  formControlName="nombre"/>
+        </div>
+      </div>
 
+      <div class="field">
+        <label class="label">Intrucciones de la tarea</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Instrucciones"  formControlName="instrucciones"></textarea>
+        </div>
+      </div>
 
+      <div class="field">
+        <label class="label">Fecha de entrega</label>
+        <div class="control">
+          <input
+            type="date"
+            value="2020-06-15"
+            min="2020-06-16"
+            max="2020-12-31"
+            formControlName="fechaEntrega"
+          />
+        </div>
+      </div>
 
-          <div class="field">
-            <label class="label" >Fecha de entrega</label>
-            <div class="control">
-                <input type="date" 
-                value="2020-06-15"
-                min="2020-06-16" max="2020-12-31">
-            </div>
-          </div>  
-          
-         
-
-
-          
-          <div class="field is-grouped mt-5">
-            <div class="control">
-              <button class="button is-link">Submit</button>
-            </div>
-            <div class="control">
-              <button class="button is-link is-light">Cancel</button>
-            </div>
-          </div>
-      </section>
-    </div>
+      <div class="field is-grouped mt-5">
+        <div class="control">
+          <button class="button is-link" [disabled]="!formTarea.valid" (click)="onSubmitTarea()">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+      </form>
+    </section>
   </div>
+</div>
+
+
+<!--REGISTRO DE PROYECTOS -->
+<div class="modal is-active" *ngIf="modalProyectos">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Agregar Proyecto</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="toggleModalProyectos()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form [formGroup]="formProyecto">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input"  formControlName="nombre"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Intrucciones del proyecto</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Instrucciones"  formControlName="instrucciones"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Fecha de entrega</label>
+        <div class="control">
+          <input
+            type="date"
+            value="2020-06-15"
+            min="2020-06-16"
+            max="2020-12-31"
+            formControlName="fechaEntrega"
+          />
+        </div>
+      </div>
+
+      <div class="field is-grouped mt-5">
+        <div class="control">
+          <button class="button is-link" [disabled]="!formProyecto.valid" (click)="onSubmitProyecto()">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+      </form>
+    </section>
+  </div>
+</div>

@@ -3,25 +3,25 @@
     <h1 class="title is-2" style="margin-left: 10px; margin-top: 15px;">En vivo</h1>
     <h1 class="subtitle" style="margin-left: 10px;">Desliza para ver más clases</h1>
     <div class="columns">
-        <div class="column is-4 is-8-mobile is-4-desktop is-3-tablet" *ngFor="let subject of subjectsLive">
+        <div class="column is-4 is-8-mobile is-4-desktop is-3-tablet" *ngFor="let materia of materias">
             <div class="card">
                 <div class="card-image">
-                    <figure class="image is-3by1">
+                    <!-- <figure class="image is-3by1">
                         <img [src]="subject.image" alt="Placeholder image">
-                    </figure>
+                    </figure> -->
                 </div>
                 <div class="card-content">
                     <div class="content">
-                        <p class="title is-5">{{subject.abstract}}</p>
-                        <p class="subtitle is-6">{{subject.name}}</p>
-                        <p class="subtitle is-6">Impartida por {{subject.teacher}}</p>
+                        <p class="title is-5">{{materia.nombre}}</p>
+                        <!-- <p class="subtitle is-6">{{subject.name}}</p>
+                        <p class="subtitle is-6">Impartida por {{subject.teacher}}</p> -->
                         <div class="has-text-left">
                             <time datetime="2016-1-1">En vivo ahora</time>
                         </div>
                     </div>
 
 
-                    <a class="button is-primary is-fullwidth" routerLink="{{subject.id}}">
+                    <a class="button is-primary is-fullwidth" routerLink="{{materia.id}}">
                         Unirse
                     </a>
 
@@ -33,7 +33,7 @@
 <!-- Finish en vivo -->
 
 <!-- Pŕoximas clases -->
-<div class="container" style="padding-top: 50px;">
+<!-- <div class="container" style="padding-top: 50px;">
     <h1 class="title is-2" style="margin-left: 10px; margin-top: 15px;">Próximas clases</h1>
     <h1 class="subtitle" style="margin-left: 10px;">Desliza para ver más clases</h1>
     <div class="columns">
@@ -52,16 +52,16 @@
                             <time datetime="2016-1-1">{{subject.date}}</time>
                             <p class="subtitle">{{subject.hora}} hrs</p>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <!-- <a class="button is-primary is-fullwidth" routerLink="{{subject.id}}">
                         Unirse
                     </a> -->
 
-                </div>
+                <!-- </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Finish pŕoximas clases -->
+Finish pŕoximas clases -->

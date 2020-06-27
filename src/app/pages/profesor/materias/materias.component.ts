@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Profesor } from 'src/app/shared/models/profesor.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-materias',
@@ -18,7 +19,8 @@ export class MateriasComponent implements OnInit {
 
   constructor(
     private afs: AngularFirestore,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+  
   ) { }
 
   ngOnInit() {
@@ -48,5 +50,9 @@ export class MateriasComponent implements OnInit {
     });
   }
 
+
+
+
+  
 
 }

@@ -1,10 +1,9 @@
 import { Alumno } from './alumno.model';
 
-export interface Entrega {
+export interface EntregaProyecto {
     id: string;
     comentarios: string;
-    tareaID: string;
-    calificacion: number; 
+    proyectoID: string;
+    calificación: number; 
     alumno: Alumno;
-    archivo: string; 
 }

@@ -4,7 +4,7 @@
       <h2 class="title is-3 ">Instrucciones: </h2>
       <p>{{ tarea.instrucciones }}</p>
       <h2 class="title is-3" style="margin-top: 10px;">Fecha de entrega: </h2>
-      <p *ngIf="tarea.fechaEntrega">{{ tarea.fechaEntrega.toDate() | date }}</p>
+      <!-- <p *ngIf="tarea.fechaEntrega">{{ tarea.fechaEntrega | date }}</p> -->
 
 
       <div class="columns">
@@ -41,7 +41,7 @@
           <p>{{ e.alumno.grupo}}</p>
           <h2 class="title is-6" style="margin-top: 10px;">Calificación: </h2>
           <p>{{ e.calificacion}}</p>
-          <button class="button is-primary has-text-right" routerLink="/">Calificar</button>
+          <button class="button is-primary has-text-right" routerLink="/entrega/{{ e.id }}">Calificar</button>
         </div>
       </div>
 </div>

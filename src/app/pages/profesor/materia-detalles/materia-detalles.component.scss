@@ -3,9 +3,9 @@
     min-height: 100vh;
 }
 
-.tareas {
+.tabs {
     padding-top: 10%;
-    
+}
 
     .tarea{
         display: block;
@@ -14,7 +14,14 @@
         padding: 20px;
     }
 
-}
+    .proyecto{
+        display: block;
+        margin-top: 50px;
+        border: 2px solid var(--font-color);
+        padding: 20px;
+    }
+
+
 
 .label {
     color: black !important;
@@ -26,4 +33,8 @@ table{
 }
 th{
     color: var(--font-color)!important;
+}
+
+a {
+    text-decoration: none;
 }

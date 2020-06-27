@@ -28,6 +28,9 @@ import { MateriaDetallesComponent } from './pages/profesor/materia-detalles/mate
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { SubirClaseComponent } from './pages/profesor/subir-clase/subir-clase.component';
 import { TareaDetallesComponent } from './pages/profesor/tarea-detalles/tarea-detalles.component';
+import { ProyectoDetallesComponent } from './pages/profesor/proyecto-detalles/proyecto-detalles.component';
+import { CalificarComponent } from './pages/profesor/calificar/calificar.component';
+import { IniciarStreamComponent } from './pages/profesor/iniciar-stream/iniciar-stream.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { TareaDetallesComponent } from './pages/profesor/tarea-detalles/tarea-de
     MateriaDetallesComponent,
     FileUploadComponent,
     SubirClaseComponent,
-    TareaDetallesComponent
+    TareaDetallesComponent,
+    ProyectoDetallesComponent,
+    CalificarComponent,
+    IniciarStreamComponent
   ],
   imports: [
     BrowserModule,

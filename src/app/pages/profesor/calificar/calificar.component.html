@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="title is-1 has-text-centered">{{ entrega.alumno.nombre }}</h1>
+    <button class="is-primary button" style="float: right;">Editar</button>
+        <p>{{ entrega.alumno.grupo }}</p>
+        <h2 class="title is-3" style="margin-top: 10px;">Comentarios: </h2>
+        <p>{{ entrega.comentarios }}</p>
+
+        <h2 class="title is-3" style="margin-top: 10px;">Calificación: </h2>
+        <p class="subtitle is-4">{{ entrega.calificacion }}</p>
+
+  
+        <div class="columns">
+          <div class="column" >
+            <embed
+              [src]="safeUrl(entrega.archivo)"
+              type="application/pdf"
+              width="100%"
+              height="600px"
+            />
+            <a [href]="safeUrl(entrega.archivo)">Archivo</a>
+          </div>
+        </div>
+   
+        <label class="label">Calificación</label>
+        <input #calificacion id="calificacion" class="input" type="number" placeholder="Calificación">
+        <button class="button is-primary" style="margin-top: 10px;" (click)= "calificar(calificacion.value)">Enviar Calificación</button>
+  </div>
+  

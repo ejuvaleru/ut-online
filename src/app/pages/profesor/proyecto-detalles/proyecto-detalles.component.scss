@@ -1,0 +1,17 @@
+.container{
+    padding: 10%;
+    min-height: 100vh;
+}
+
+.entregas {
+    padding-top: 10%;
+    
+
+    .entrega{
+        display: block;
+        margin-top: 50px;
+        border: 2px solid var(--font-color);
+        padding: 20px;
+    }
+
+}

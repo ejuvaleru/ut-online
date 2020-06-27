@@ -39,7 +39,7 @@ export class TareaDetallesComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res)
         this.entregas = [];
-        res.forEach(e => {
+        res.forEach((e: Entrega) => {
           this.entregas.push(e);
         });
       }
