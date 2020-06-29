@@ -1,7 +1,12 @@
 <div class="container">
     <div class="container-flex">
-        <div class="form-container">
-            <h1 class="title">Agregar vídeo grabado</h1>
+
+
+        <button class="button is-primary is-fullwidth" (click)="agregarVideo()" *ngIf="!isAdding">Agregar vídeo</button>
+
+        <div class="form-container" *ngIf="isAdding || isEditing">
+            <h1 class="title" *ngIf="isAdding">Agregar vídeo grabado</h1>
+            <h1 class="title" *ngIf="isEditing">Editar vídeo grabado</h1>
 
             <form [formGroup]="formSubirClase">
                 <div class="field">
@@ -22,14 +27,20 @@
                 <div class="field">
                     <label for="mat" class="label">Seleccionar materia:</label>
                     <div class="select" name="mat" id="mat">
-                        <select formControlName="materia" >
+                        <select formControlName="materia">
                             <option *ngFor="let m of materiasParaElForm" [value]="m.id">{{m.nombre}}</option>
                         </select>
                     </div>
                 </div>
 
-                <button class="button is-primary is-fullwidth" (click)="onSubmit()"
-                    [disabled]="!formSubirClase.valid">Agregar</button>
+                <button class="button is-primary is-fullwidth" (click)="onSubmit()" [disabled]="!formSubirClase.valid"
+                    *ngIf="isAdding">Agregar</button>
+
+                <button class="button is-primary is-fullwidth" (click)="onUpdate()" [disabled]="!formSubirClase.valid"
+                    *ngIf="isEditing">Actualizar</button>
+                <br>
+                <button class="button is-danger is-fullwidth" (click)="agregarVideo()" *ngIf="isAdding">Cancelar</button>
+                <button class="button is-danger is-fullwidth" (click)="editarVideo()" *ngIf="isEditing">Cancelar</button>
             </form>
         </div>
         <div class="container-table">
@@ -46,11 +57,11 @@
                         <th>{{ c.video.titulo }}</th>
                         <th>{{ c.materia.nombre }}</th>
                         <td>
-                            <button class="button is-primary">
+                            <button class="button is-primary" (click)="onEditar(c)">
                                 <span>Editar</span>
                                 <span><i class="fas fa-edit ml"></i></span>
                             </button>
-                            <button class="button is-danger" >
+                            <button class="button is-danger" (click)="eliminarVideo(c.video.id)">
                                 Eliminar
                                 <span><i class="fas fa-trash ml"></i></span>
                             </button>
