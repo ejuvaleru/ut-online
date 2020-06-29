@@ -14,7 +14,12 @@ export class SubirClaseComponent implements OnInit {
   formSubirClase: FormGroup;
   materia: any;
 
-  constructor(private afs: AngularFirestore) {}
+  isAdding = false;
+  isEditing = false;
+
+  idVideo = '';
+
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
     this.setUpForm();
@@ -44,7 +49,50 @@ export class SubirClaseComponent implements OnInit {
     let enlace = this.formSubirClase.value.enlace;
     let idMateria = this.formSubirClase.value.materia;
     console.log(titulo, enlace);
-    this.afs.collection("clases-grabadas").add({ titulo, enlace, idMateria });
+    this.afs.collection("clases-grabadas").add({ titulo, enlace, idMateria }).then(res => {
+      this.afs.collection("clases-grabadas").doc(res.id).set({ id: res.id }, { merge: true });
+    }).then(() => {
+      this.formSubirClase.reset();
+      this.agregarVideo();
+    });
+  }
+
+  onUpdate() {
+    let titulo = this.formSubirClase.value.titulo;
+    let enlace = this.formSubirClase.value.enlace;
+    let idMateria = this.formSubirClase.value.materia;
+
+    if (this.idVideo) {
+      this.afs.collection("clases-grabadas").doc(this.idVideo).update({ titulo, enlace, idMateria }).then(() => {
+        this.editarVideo();
+        this.idVideo = null;
+        this.formSubirClase.reset();
+      });
+    }
+  }
+
+  onEditar(objeto) {
+
+    this.idVideo = objeto.video.id;
+    this.editarVideo();
+    this.formSubirClase = new FormGroup({
+      titulo: new FormControl(objeto.video.titulo, {
+        updateOn: "change",
+        validators: [Validators.required],
+      }),
+      enlace: new FormControl(objeto.video.enlace, {
+        updateOn: "change",
+        validators: [Validators.required],
+      }),
+      materia: new FormControl(objeto.materia.nombre, {
+        updateOn: "change",
+        validators: [Validators.required],
+      }),
+    });
+  }
+
+  eliminarVideo(id) {
+    this.afs.collection("clases-grabadas").doc(id).delete();
   }
 
   getVideosGrabados() {
@@ -60,7 +108,6 @@ export class SubirClaseComponent implements OnInit {
             .valueChanges()
             .subscribe((materia: any) => {
               console.log(res);
-              console.log("MATERIAAAA", materia);
               this.clasesGrabadas.push({ video, materia } as Object);
             });
         });
@@ -86,5 +133,20 @@ export class SubirClaseComponent implements OnInit {
         this.materia = res.nombre;
         //return res;
       });
+  }
+
+  // Métodos de apoyo
+  agregarVideo() {
+    if(this.isEditing){
+      this.editarVideo();
+      this.setUpForm();
+      this.isAdding = !this.isAdding;
+    } else {
+      this.isAdding = !this.isAdding;
+    }
+  }
+
+  editarVideo() {
+    this.isEditing = !this.isEditing;
   }
 }
