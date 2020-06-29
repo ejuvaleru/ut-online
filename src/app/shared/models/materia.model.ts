@@ -10,5 +10,6 @@ export interface Materia {
     grupos: Grupo[];
     profesorId: string; 
     archivo: string;
+    envivo: boolean; 
 
 }

@@ -1,17 +1,41 @@
 <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-    <div class="file has-name is-boxed">
-      <label class="file-label">
-        <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
-        <span class="file-cta">
-          <span class="file-label">
-            Elegir un archivo…
-          </span>
+  <div class="file has-name is-boxed">
+    <label class="file-label">
+      <input
+        class="file-input"
+        type="file"
+        formControlName="archivo"
+        (change)="cambioArchivo($event)"
+      />
+      <span class="file-cta">
+        <span class="file-label">
+          Elegir un archivo…
         </span>
-        <span class="file-name">
-          {{ mensajeArchivo }}
-        </span>
-      </label>
-    </div>
-    <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-medium is-success" value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
-    <button style="margin: 20px 0;" [ngClass]="{'button': true, 'is-primary': true, 'is-medium': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
-  </form>
+      </span>
+      <span class="file-name">
+        {{ mensajeArchivo }}
+      </span>
+    </label>
+  </div>
+  <progress
+    *ngIf="porcentaje > 0 && porcentaje < 100"
+    class="progress is-medium is-success"
+    value="{{ porcentaje }}"
+    max="100"
+    >{{ porcentaje }}%</progress
+  >
+  <button
+    style="margin: 20px 0;"
+    [ngClass]="{
+      button: true,
+      'is-secondary': true,
+      'is-loading': porcentaje > 0 && porcentaje < 100
+    }"
+    [disabled]="!archivoForm.valid && porcentaje > 0 && porcentaje < 100"
+  >
+  <span>
+    <i class="fa fa-upload mr" aria-hidden="true"></i>
+  </span>
+    Subir archivo
+  </button>
+</form>

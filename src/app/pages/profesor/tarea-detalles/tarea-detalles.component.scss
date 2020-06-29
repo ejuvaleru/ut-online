@@ -3,6 +3,13 @@
     min-height: 100vh;
 }
 
+
+.link {
+    font-size: 30px;
+    text-align: center;
+    text-decoration: underline;
+}
+
 .entregas {
     padding-top: 10%;
     
@@ -14,4 +21,12 @@
         padding: 20px;
     }
 
+}
+
+.mr {
+    margin-right: 10px;
+}
+
+.modal .label {
+    color: black !important;
 }

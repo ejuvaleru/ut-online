@@ -1,5 +1,11 @@
 <div class="container">
   <h1 class="title is-1 has-text-centered">{{ materia.nombre }}</h1>
+  <a class="button is-primary" style="float: right;" (click)="backClicked()">
+    <span>
+      <i class="fa fa-chevron-circle-left mr" aria-hidden="true"></i>
+    </span>
+    Volver
+  </a>
   <h2 class="title is-5" style="margin-top: 100px;">
     Horario de la materia asignada
   </h2>
@@ -34,7 +40,7 @@
           [doc]="materia.id"
         ></app-file-upload>
       </div>
-      <div class="column">
+      <div class="column" *ngIf="materia.archivo">
         <embed
           [src]="safeUrl(materia.archivo)"
           type="application/pdf"
@@ -57,9 +63,10 @@
     </ul>
   </div>
 
-  <div class="tareas" *ngIf = "active === true">
+  <div class="tareas" *ngIf="active === true">
     <h1 class="title is-1 has-text-centered">Tareas</h1>
-    <button class="button is-primary is-medium" (click)="toggleModal()">
+    <button class="button is-secondary" (click)="toggleModal()">
+      <span> <i class="fa fa-plus mr" aria-hidden="true"> </i></span>
       Agregar tarea
     </button>
     <div *ngFor="let t of tareas" class="tarea">
@@ -69,19 +76,24 @@
       <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega:</h2>
       <p *ngIf="t.fechaEntrega">{{ t.fechaEntrega.toDate() | date }}</p>
       <button
-        class="button is-primary has-text-right"
+        class="button is-secondary has-text-right"
         routerLink="/tarea/{{ t.id }}"
+        style="margin: 10px;"
       >
+        <span><i class="fa fa-info mr" aria-hidden="true"></i></span>
         Detalles
+      </button>
+      <button class="button is-danger has-text-right" style="margin: 10px;" (click)="deleteTarea(t.id)">
+        <span> <i class="fa fa-trash mr" aria-hidden="true"></i></span>
+        Eliminar
       </button>
     </div>
   </div>
 
-
-
-  <div class="proyectos" *ngIf = "active === false">
+  <div class="proyectos" *ngIf="active === false">
     <h1 class="title is-1 has-text-centered">Proyectos</h1>
-    <button class="button is-primary is-medium" (click)="toggleModalProyectos()">
+    <button class="button is-secondary" (click)="toggleModalProyectos()">
+      <span> <i class="fa fa-plus mr" aria-hidden="true"> </i></span>
       Agregar Proyecto
     </button>
     <div *ngFor="let p of proyectos" class="proyecto">
@@ -91,15 +103,20 @@
       <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega:</h2>
       <p *ngIf="p.fechaEntrega">{{ p.fechaEntrega.toDate() | date }}</p>
       <button
-        class="button is-primary has-text-right"
+        class="button is-secondary has-text-right"
         routerLink="/proyecto/{{ p.id }}"
+        style="margin: 10px;"
       >
+        <span><i class="fa fa-info mr" aria-hidden="true"></i></span>
         Detalles
+      </button>
+      <button class="button is-danger has-text-right" style="margin: 10px;" (click)="deleteProyecto(p.id)">
+        <span> <i class="fa fa-trash mr" aria-hidden="true"></i></span>
+        Eliminar
       </button>
     </div>
   </div>
 </div>
-
 
 <!--FORMULARIO DE TAREAS-->
 <div class="modal is-active" *ngIf="modal">
@@ -114,48 +131,61 @@
       ></button>
     </header>
     <section class="modal-card-body">
-
       <form [formGroup]="formTarea">
-      <div class="field">
-        <label class="label">Nombre</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input"  formControlName="nombre"/>
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              formControlName="nombre"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Intrucciones de la tarea</label>
-        <div class="control">
-          <textarea class="textarea" placeholder="Instrucciones"  formControlName="instrucciones"></textarea>
+        <div class="field">
+          <label class="label">Intrucciones de la tarea</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Instrucciones"
+              formControlName="instrucciones"
+            ></textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Fecha de entrega</label>
-        <div class="control">
-          <input
-            type="date"
-            value="2020-06-15"
-            min="2020-06-16"
-            max="2020-12-31"
-            formControlName="fechaEntrega"
-          />
+        <div class="field">
+          <label class="label">Fecha de entrega</label>
+          <div class="control">
+            <input
+              type="date"
+              value="2020-06-15"
+              min="2020-06-16"
+              max="2020-12-31"
+              formControlName="fechaEntrega"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="field is-grouped mt-5">
-        <div class="control">
-          <button class="button is-link" [disabled]="!formTarea.valid" (click)="onSubmitTarea()">Submit</button>
+        <div class="field is-grouped mt-5">
+          <div class="control">
+            <button
+              class="button is-link"
+              [disabled]="!formTarea.valid"
+              (click)="onSubmitTarea()"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancel</button>
+          </div>
         </div>
-        <div class="control">
-          <button class="button is-link is-light">Cancel</button>
-        </div>
-      </div>
       </form>
     </section>
   </div>
 </div>
-
 
 <!--REGISTRO DE PROYECTOS -->
 <div class="modal is-active" *ngIf="modalProyectos">
@@ -170,43 +200,57 @@
       ></button>
     </header>
     <section class="modal-card-body">
-
       <form [formGroup]="formProyecto">
-      <div class="field">
-        <label class="label">Nombre</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input"  formControlName="nombre"/>
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              formControlName="nombre"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Intrucciones del proyecto</label>
-        <div class="control">
-          <textarea class="textarea" placeholder="Instrucciones"  formControlName="instrucciones"></textarea>
+        <div class="field">
+          <label class="label">Intrucciones del proyecto</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Instrucciones"
+              formControlName="instrucciones"
+            ></textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Fecha de entrega</label>
-        <div class="control">
-          <input
-            type="date"
-            value="2020-06-15"
-            min="2020-06-16"
-            max="2020-12-31"
-            formControlName="fechaEntrega"
-          />
+        <div class="field">
+          <label class="label">Fecha de entrega</label>
+          <div class="control">
+            <input
+              type="date"
+              value="2020-06-15"
+              min="2020-06-16"
+              max="2020-12-31"
+              formControlName="fechaEntrega"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="field is-grouped mt-5">
-        <div class="control">
-          <button class="button is-link" [disabled]="!formProyecto.valid" (click)="onSubmitProyecto()">Submit</button>
+        <div class="field is-grouped mt-5">
+          <div class="control">
+            <button
+              class="button is-link"
+              [disabled]="!formProyecto.valid"
+              (click)="onSubmitProyecto()"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancel</button>
+          </div>
         </div>
-        <div class="control">
-          <button class="button is-link is-light">Cancel</button>
-        </div>
-      </div>
       </form>
     </section>
   </div>

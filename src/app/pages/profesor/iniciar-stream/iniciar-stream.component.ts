@@ -17,8 +17,7 @@ export class IniciarStreamComponent implements OnInit {
     public afAuth: AngularFireAuth,
   ) { }
 
-  ngOnInit(): void {
-
+  ngOnInit(){
     this.afAuth.authState.subscribe(res => {
       this.profesorID = res.uid;
       this.afs.collection('materias', ref =>ref.where('profesorId', '==', this.profesorID) ).valueChanges()
@@ -31,6 +30,13 @@ export class IniciarStreamComponent implements OnInit {
       }
       );
     });
+  }
+
+
+  iniciarStream(id) {
+    this.afs.collection('materias').doc(id).update({
+      envivo: true
+    }); 
   }
 
 }

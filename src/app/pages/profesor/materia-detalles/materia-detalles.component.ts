@@ -3,9 +3,10 @@ import { ActivatedRoute } from "@angular/router";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Materia } from "src/app/shared/models/materia.model";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Tarea } from "src/app/shared/models/tarea.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { map } from "rxjs/operators";
+import { Location } from "@angular/common";
+import swal from "sweetalert2";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-materia-detalles",
@@ -29,7 +30,9 @@ export class MateriaDetallesComponent implements OnInit {
   constructor(
     private actRoute: ActivatedRoute, // Se utliza para obtener datos de la ruta actual
     private afs: AngularFirestore,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private _location: Location,
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -132,7 +135,19 @@ export class MateriaDetallesComponent implements OnInit {
     this.afs
       .collection("tareas")
       .doc(id)
-      .set({ id, nombre, instrucciones, materiaID, fechaEntrega });
+      .set({ id, nombre, instrucciones, materiaID, fechaEntrega })
+      .then((res) => {
+        this.toast.success("Registro exitoso", "Mensaje", {
+          positionClass: "toast-bottom-center",
+          timeOut: 3000,
+        });
+      })
+      .catch((e) => {
+        this.toast.error(e, "Algo salió mal", {
+          positionClass: "toast-bottom-center",
+          timeOut: 3000,
+        });
+      });
     this.toggleModal();
   }
 
@@ -147,7 +162,81 @@ export class MateriaDetallesComponent implements OnInit {
     this.afs
       .collection("proyectos")
       .doc(id)
-      .set({ id, nombre, instrucciones, materiaID, fechaEntrega });
+      .set({ id, nombre, instrucciones, materiaID, fechaEntrega })
+      .then((res) => {
+        this.toast.success("Registro exitoso", "Mensaje", {
+          positionClass: "toast-bottom-center",
+          timeOut: 3000,
+        });
+      })
+      .catch((e) => {
+        this.toast.error(e, "Algo salió mal", {
+          positionClass: "toast-bottom-center",
+          timeOut: 3000,
+        });
+      });
     this.toggleModalProyectos();
+  }
+
+  backClicked() {
+    this._location.back();
+  }
+
+  openAlert() {
+    return swal.fire({
+      title: "¿Estás seguro? ",
+      text: "No podrás revertir esta acción",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    });
+  }
+
+  deleteTarea(id) {
+    this.openAlert().then((res) => {
+      if (res.value) {
+        this.afs
+          .collection("tareas")
+          .doc(id)
+          .delete()
+          .then((res) => {
+            this.toast.success("Eliminación exitosa", "Mensaje", {
+              positionClass: "toast-bottom-center",
+              timeOut: 3000,
+            });
+          })
+          .catch((e) => {
+            this.toast.error(e, "Algo salió mal", {
+              positionClass: "toast-bottom-center",
+              timeOut: 3000,
+            });
+          });
+      }
+    });
+  }
+
+  
+  deleteProyecto(id) {
+    this.openAlert().then((res) => {
+      if (res.value) {
+        this.afs
+          .collection("proyectos")
+          .doc(id)
+          .delete()
+          .then((res) => {
+            this.toast.success("Eliminación exitosa", "Mensaje", {
+              positionClass: "toast-bottom-center",
+              timeOut: 3000,
+            });
+          })
+          .catch((e) => {
+            this.toast.error(e, "Algo salió mal", {
+              positionClass: "toast-bottom-center",
+              timeOut: 3000,
+            });
+          });
+      }
+    });
   }
 }

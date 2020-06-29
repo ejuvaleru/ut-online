@@ -32,6 +32,7 @@ export class ClasesEnVivoComponent implements OnInit {
         .doc(res.uid)
         .valueChanges()
         .subscribe( (res : Alumno) => { 
+          this.materias = [];
           res.materias.forEach((materia: Materia) => {
             console.log(materia); 
 

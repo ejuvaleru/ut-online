@@ -36,6 +36,20 @@
   .encabezado{
     margin: 30px 10px;
   }
+
+  .temas{
+    border: 1px solid var(--font-color);
+    padding: 20px;
+
+    .titulo{
+      color: var(--font-color) !important;
+      
+    }
+
+    .titulo:hover{
+      color: var(--primary-color) !important;
+    }
+  }
   
   
   @media (max-width: 768px) {

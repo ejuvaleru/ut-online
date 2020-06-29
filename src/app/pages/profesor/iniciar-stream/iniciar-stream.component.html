@@ -21,7 +21,7 @@
                     </div>
 
 
-                    <a class="button is-primary is-fullwidth" routerLink="/clases-en-vivo/{{materia.id}}">
+                    <a class="button is-primary is-fullwidth" (click)= "iniciarStream(materia.id)" routerLink="/clases-en-vivo/{{materia.id}}">
                         Iniciar Stream
                     </a>
 

@@ -1,47 +1,146 @@
 <div class="container">
   <h1 class="title is-1 has-text-centered">{{ tarea.nombre }}</h1>
-  <button class="is-primary button" style="float: right;">Editar</button>
-      <h2 class="title is-3 ">Instrucciones: </h2>
-      <p>{{ tarea.instrucciones }}</p>
-      <h2 class="title is-3" style="margin-top: 10px;">Fecha de entrega: </h2>
-      <!-- <p *ngIf="tarea.fechaEntrega">{{ tarea.fechaEntrega | date }}</p> -->
+  <a
+    class="button is-secondary"
+    style="float: right; margin: 10px;"
+    (click)="backClicked()"
+  >
+    <span>
+      <i class="fa fa-chevron-circle-left mr" aria-hidden="true"></i>
+    </span>
+    Volver
+  </a>
+  <button
+    class="is-secondary button"
+    style="float: right; margin: 10px;"
+    (click)="toggleModal()"
+  >
+    <span><i class="fas fa-edit mr"></i></span>Editar
+  </button>
+  <h2 class="title is-3">Instrucciones:</h2>
+  <p>{{ tarea.instrucciones }}</p>
+  <h2 class="title is-3" style="margin-top: 10px;">Fecha de entrega:</h2>
+  <!-- <p *ngIf="tarea.fechaEntrega">{{ tarea.fechaEntrega | date }}</p> -->
 
+  <div class="columns">
+    <div class="column" style="margin-right: 50px;">
+      <h1 class="title is-4">Material de apoyo</h1>
+      <p style="margin-bottom: 20px;">
+        Sube material de apoyo para la tarea, solo se permite un archivo, a la
+        derecha puedes visualizar el archivo actual.
+      </p>
+      <app-file-upload [coleccion]="coleccion" [doc]="id"></app-file-upload>
+    </div>
+    <div class="column" *ngIf="tarea.archivo">
+      <a [href]="safeUrl(tarea.archivo)" class="link">Abrir en otra ventana</a>
+      <embed
+        [src]="safeUrl(tarea.archivo)"
+        type="application/pdf"
+        width="100%"
+        height="600px"
+        style="margin-top: 20px;"
+      />
+    </div>
+  </div>
 
-      <div class="columns">
-        <div class="column">
-          <h1 class="title is-4">Material de apoyo</h1>
-          <p style="margin-bottom: 20px;">
-            Sube material de apoyo para la tarea, solo se permite
-            un archivo, a la derecha puedes visualizar el archivo actual.
-          </p>
-          <app-file-upload
-            [coleccion]="coleccion"
-            [doc]="id"
-          ></app-file-upload>
+  <div class="entregas">
+    <h1 class="title is-1 has-text-centered">Entregas</h1>
+    <div *ngIf="entregas.length < 1">
+      <h1 class="title is-4 has-text-centered">
+        No hay entregas por el momento
+      </h1>
+    </div>
+    <div *ngFor="let e of entregas" class="entrega">
+      <h2 class="title is-4">
+        {{ e.alumno.nombre }}--{{ e.alumno.matricula }}
+      </h2>
+      <h2 class="title is-6">Comentarios:</h2>
+      <p>{{ e.comentarios }}</p>
+      <h2 class="title is-6" style="margin-top: 10px;">Grupo:</h2>
+      <p>{{ e.alumno.grupo }}</p>
+      <h2 class="title is-6" style="margin-top: 10px;">Calificación:</h2>
+      <p>{{ e.calificacion }}</p>
+      <button
+        class="button is-primary has-text-right"
+        routerLink="/entrega/{{ e.id }}"
+      >
+        Calificar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--FORMULARIO DE TAREAS-->
+<div class="modal is-active" *ngIf="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Agregar Tarea</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="toggleModal()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="formTarea">
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              formControlName="nombre"
+            />
+          </div>
         </div>
-        <div class="column" >
-          <embed
-            [src]="safeUrl(tarea.archivo)"
-            type="application/pdf"
-            width="100%"
-            height="600px"
-          />
-          <a [href]="safeUrl(tarea.archivo)">Archivo</a>
-        </div>
-      </div>
 
-
-      <div class="entregas">
-        <h1 class="title is-1 has-text-centered">Entregas</h1>
-        <div *ngFor="let e of entregas" class="entrega">
-          <h2 class="title is-4">{{ e.alumno.nombre}}--{{e.alumno.matricula}}</h2>
-          <h2 class="title is-6 ">Comentarios: </h2>
-          <p>{{ e.comentarios }}</p>
-          <h2 class="title is-6" style="margin-top: 10px;">Grupo: </h2>
-          <p>{{ e.alumno.grupo}}</p>
-          <h2 class="title is-6" style="margin-top: 10px;">Calificación: </h2>
-          <p>{{ e.calificacion}}</p>
-          <button class="button is-primary has-text-right" routerLink="/entrega/{{ e.id }}">Calificar</button>
+        <div class="field">
+          <label class="label">Intrucciones de la tarea</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Instrucciones"
+              formControlName="instrucciones"
+            ></textarea>
+          </div>
         </div>
-      </div>
+
+        <div class="field">
+          <label class="label">Fecha de entregas</label>
+          <div class="control">
+            <input
+              type="datetime-local"
+              value="2020-06-15"
+              min='fechaHoy'
+              max="2020-06-30"
+              formControlName="fechaEntrega"
+            />
+          </div>
+        </div>
+
+        <div class="field is-grouped mt-5" style="float: right;">
+          <div class="control">
+            <button
+              class="button is-secondary"
+              [disabled]="!formTarea.valid"
+              (click)="onSubmitTarea()"
+            >
+            <span>
+              <i class="fa fa-check-square mr" aria-hidden="true"></i>
+            </span>
+            
+              Submit
+            </button>
+          </div>
+          <div class="control">
+            <button class="button is-danger " (click)= "toggleModal()">
+              <span><i class="fa fa-times mr" aria-hidden="true"></i></span>
+              Cancel</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
 </div>

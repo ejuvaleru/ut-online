@@ -1,48 +1,140 @@
 <div class="container">
-    <h1 class="title is-1 has-text-centered">{{ proyecto.nombre }}</h1>
-    <button class="is-primary button" style="float: right;">Editar</button>
-        <h2 class="title is-3 ">Instrucciones: </h2>
-        <p>{{ proyecto.instrucciones }}</p>
-        <h2 class="title is-3" style="margin-top: 10px;">Fecha de entrega: </h2>
-        <p *ngIf="proyecto.fechaEntrega">{{ proyecto.fechaEntrega | date }}</p>
-  
-  
-        <div class="columns">
-          <div class="column">
-            <h1 class="title is-4">Material de apoyo</h1>
-            <p style="margin-bottom: 20px;">
-              Sube material de apoyo para la tarea, solo se permite
-              un archivo, a la derecha puedes visualizar el archivo actual.
-            </p>
-            <app-file-upload
-              [coleccion]="coleccion"
-              [doc]="id"
-            ></app-file-upload>
-          </div>
-          <div class="column" >
-            <embed
-              [src]="safeUrl(proyecto.archivo)"
-              type="application/pdf"
-              width="100%"
-              height="600px"
-            />
-            <a [href]="safeUrl(proyecto.archivo)">Archivo</a>
-          </div>
-        </div>
-  
-  
-        <div class="entregas">
-          <h1 class="title is-1 has-text-centered">Entregas</h1>
-          <div *ngFor="let e of entregas" class="entrega">
-            <h2 class="title is-4">{{ e.alumno.nombre}}--{{e.alumno.matricula}}</h2>
-            <h2 class="title is-6 ">Comentarios: </h2>
-            <p>{{ e.comentarios }}</p>
-            <h2 class="title is-6" style="margin-top: 10px;">Grupo: </h2>
-            <p>{{ e.alumno.grupo}}</p>
-            <h2 class="title is-6" style="margin-top: 10px;">Calificación: </h2>
-            <p>{{ e.calificacion}}</p>
-            <button class="button is-primary has-text-right" routerLink="/">Calificar</button>
-          </div>
-        </div>
+  <h1 class="title is-1 has-text-centered">{{ proyecto.nombre }}</h1>
+  <a
+    class="button is-secondary"
+    style="float: right; margin: 10px;"
+    (click)="backClicked()"
+  >
+  <span>
+    <i class="fa fa-chevron-circle-left mr" aria-hidden="true"></i>
+  </span>
+    Volver
+  </a>
+  <button
+    class="is-secondary button"
+    style="float: right; margin: 10px;"
+    (click)="toggleModalProyectos()"
+  >
+  <span><i class="fas fa-edit mr"></i></span>
+    Editar
+  </button>
+  <h2 class="title is-3">Instrucciones:</h2>
+  <p>{{ proyecto.instrucciones }}</p>
+  <h2 class="title is-3" style="margin-top: 10px;">Fecha de entrega:</h2>
+  <!-- <p *ngIf="proyecto.fechaEntrega">
+    {{ proyecto.fechaEntrega.toDate() | date }}
+  </p> -->
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-4">Material de apoyo</h1>
+      <p style="margin-bottom: 20px;">
+        Sube material de apoyo para la tarea, solo se permite un archivo, a la
+        derecha puedes visualizar el archivo actual.
+      </p>
+      <app-file-upload [coleccion]="coleccion" [doc]="id"></app-file-upload>
+    </div>
+    <div class="column" *ngIf="proyecto.archivo">
+      <a [href]="safeUrl(proyecto.archivo)" class="link"
+        >Abrir en otra ventana</a
+      >
+      <embed
+        [src]="safeUrl(proyecto.archivo)"
+        type="application/pdf"
+        width="100%"
+        height="600px"
+      />
+    </div>
   </div>
-  
+
+  <div class="entregas">
+    <h1 class="title is-1 has-text-centered">Entregas</h1>
+    <div *ngIf="entregas.length < 1">
+      <h1 class="title is-5 has-text-centered">
+        No hay entregas por el momento
+      </h1>
+    </div>
+    <div *ngFor="let e of entregas" class="entrega">
+      <h2 class="title is-4">
+        {{ e.alumno.nombre }}--{{ e.alumno.matricula }}
+      </h2>
+      <h2 class="title is-6">Comentarios:</h2>
+      <p>{{ e.comentarios }}</p>
+      <h2 class="title is-6" style="margin-top: 10px;">Grupo:</h2>
+      <p>{{ e.alumno.grupo }}</p>
+      <h2 class="title is-6" style="margin-top: 10px;">Calificación:</h2>
+      <p>{{ e.calificacion }}</p>
+      <button class="button is-primary has-text-right" routerLink="/">
+        Calificar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--REGISTRO DE PROYECTOS -->
+<div class="modal is-active" *ngIf="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Agregar Proyecto</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="toggleModalProyectos()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="formProyecto">
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              formControlName="nombre"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Intrucciones del proyecto</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Instrucciones"
+              formControlName="instrucciones"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Fecha de entrega</label>
+          <div class="control">
+            <input
+              type="date"
+              value="2020-06-15"
+              min="2020-06-16"
+              max="2020-12-31"
+              formControlName="fechaEntrega"
+            />
+          </div>
+        </div>
+
+        <div class="field is-grouped mt-5">
+          <div class="control">
+            <button
+              class="button is-link"
+              [disabled]="!formProyecto.valid"
+              (click)="onSubmitProyecto()"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

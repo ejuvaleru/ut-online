@@ -1,25 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { SubjectService } from 'src/app/shared/subject.service';
+import { Component, OnInit } from "@angular/core";
+import { SubjectService } from "src/app/shared/subject.service";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { Alumno } from "src/app/shared/models/alumno.model";
+import { Materia } from "src/app/shared/models/materia.model";
 
 @Component({
-  selector: 'app-clases-programadas',
-  templateUrl: './clases-programadas.component.html',
-  styleUrls: ['./clases-programadas.component.scss']
+  selector: "app-clases-programadas",
+  templateUrl: "./clases-programadas.component.html",
+  styleUrls: ["./clases-programadas.component.scss"],
 })
 export class ClasesProgramadasComponent implements OnInit {
-
   subjectsLive = [];
   subjectsNext = [];
+  alumnoID: string = "";
+  alumno: Alumno = {} as Alumno;
+  materias = [];
 
-  constructor(
-    private subjectService: SubjectService
-  ) { }
+  constructor(private afs: AngularFirestore, public afAuth: AngularFireAuth) {}
 
   ngOnInit(): void {
-    this.subjectsLive = this.subjectService.getSubjectsLive();
-    console.log(this.subjectsLive);
+    this.afAuth.authState.subscribe((res) => {
+      this.alumnoID = res.uid;
+      this.afs
+        .collection("alumnos")
+        .doc(res.uid)
+        .valueChanges()
+        .subscribe((res: Alumno) => {
+          res.materias.forEach((materia: Materia) => {
+            console.log(materia);
 
-    this.subjectsNext = this.subjectService.getSubjectsNext();
+            this.afs
+              .collection("materias")
+              .doc(materia.id)
+              .valueChanges()
+              .subscribe((materia: Materia) => {
+                this.materias.push(materia);
+                console.log(this.materias + " MATERIAS");
+              });
+          });
+        });
+    });
   }
-
 }

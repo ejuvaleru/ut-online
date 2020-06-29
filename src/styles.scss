@@ -5,6 +5,7 @@
   --background: #fff;
   --font-color: #222428;
   --footer-color: #222428;
+  --secondary-color: #00C9AA;
 
   // Cards
   --card-background: #fff;
@@ -16,7 +17,7 @@
     --background: #222428;
     --font-color: #fff;
     --footer-color: #000000;
-    
+    --secondary-color: #00C9AA;
 
     // Cards
     --card-background: #121212;
@@ -31,7 +32,20 @@ body {
 }
 .is-primary {
   background-color: var(--primary-color) !important;
+  font-family: "Poppins", sans-serif !important;
 }
+
+.is-danger {
+  background-color: #d72323 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.is-secondary {
+  background-color: var(--secondary-color) !important;
+  color: white !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
 .title {
   color: var(--font-color);
 }

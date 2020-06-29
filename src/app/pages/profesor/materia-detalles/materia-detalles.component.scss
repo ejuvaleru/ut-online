@@ -5,6 +5,13 @@
 
 .tabs {
     padding-top: 10%;
+    font-weight: bold;
+    font-size: 30px;
+
+    a {
+        text-decoration-color: var(--primary-color) !important;
+        color: var(--font-color);
+    }
 }
 
     .tarea{
@@ -35,6 +42,8 @@ th{
     color: var(--font-color)!important;
 }
 
-a {
-    text-decoration: none;
+.mr{
+    margin-right: 10px;
 }
+
+

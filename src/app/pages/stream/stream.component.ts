@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Materia } from 'src/app/shared/models/materia.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-stream',
@@ -29,9 +30,9 @@ export class StreamComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private subjectService: SubjectService,
     private afs: AngularFirestore,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private _location: Location
     
   ) { }
 
@@ -65,7 +66,10 @@ export class StreamComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then(res => {
       if (res.value) {
-        this.router.navigateByUrl('/clases-en-vivo');
+        this.backClicked();
+        this.afs.collection('materias').doc(this.idSubject).update({
+          envivo: false
+        });
       }
     });
   }
@@ -95,6 +99,10 @@ export class StreamComponent implements OnInit {
 
   safeUrl(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`https://192.168.1.82/${url}`);
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
 

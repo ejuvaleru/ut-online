@@ -1,38 +1,44 @@
 <div class="container">
-    <div class="encabezado">
-        <h1 class="title is-1 ">{{subjectElement.name}}</h1>
+  <div class="encabezado">
+    <h1 class="title is-1">{{ subjectElement.nombre }}</h1>
 
-        <a class="button is-primary is-medium " routerLink="/clases-grabadas">
-            Volver
-        </a>
+    <a class="button is-primary is-medium" routerLink="/clases-grabadas">
+      Volver
+    </a>
+  </div>
+  <div *ngIf="videos.length < 1">
+      <h1 class="title is-2 has-text-centered">No hay contenido por el momento</h1>
+  </div>
+  <div class="columns" *ngIf= "videos.length > 0">
+    <div class="column is-12-mobile is-8-desktop is-12-tablet"  *ngIf = "video">
+      <div class="subject-box">
+        <iframe
+          width="800"
+          height="500"
+          [src]="safeUrl(video.enlace)"
+          frameborder="0"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
 
-    </div>
-    <div class="columns">
-        <div class="column is-12-mobile is-8-desktop is-12-tablet">
-            <div class="subject-box">
-                <video controls autoplay="false">
-                    <source src="{{video}}" type="video/mp4">
-                </video>
-
-                <div class="titles">
-                    <h2> <span class="title is-5">{{subjectElement.teacher}}</span></h2>
-                </div>
-            </div>
-
-
+        <div class="titles">
+          <h2>
+            <span class="title is-5">{{ video.titulo }}</span>
+          </h2>
         </div>
-
-        <div class="column is-4 is-12-tablet is-4-desktop">
-            <div class="temas">
-                <h3 class="subtitle is-5 has-text-centered is-uppercase"> Temas del curso  </h3>
-               <div *ngFor= "let tema of curso.temas">
-                   <p (click) = "cambiarVideo(tema.video)">{{tema.nombre}}</p>
-
-               </div>
-            </div>
-            <div class="mensaje">
-               
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="column is-4 is-12-tablet is-4-desktop">
+      <div class="temas">
+        <h3 class="subtitle is-5 has-text-centered is-uppercase">
+          Temas del curso
+        </h3>
+        <div *ngFor="let v of videos" class="temas">
+          <a (click)="cambiarVideo(v)" class="titulo">{{ v.titulo }}</a>
+        </div>
+      </div>
+      <div class="mensaje"></div>
+    </div>
+  </div>
 </div>
