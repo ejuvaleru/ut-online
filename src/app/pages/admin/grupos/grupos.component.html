@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="title is- has-text-centered">Grupos</h1>
+
+    <table class="table is-fullwidth">
+        <thead>
+            <th>Grupo</th>
+            <th>Más</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let g of grupos">
+            <td>{{g.nombre}}</td>
+          
+            <td>
+              <button class="button is-primary" routerLink= "{{g.id}}">Alumnos</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>

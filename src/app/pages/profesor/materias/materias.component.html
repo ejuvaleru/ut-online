@@ -9,9 +9,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let m of materias">
-            <td>{{m.nombre}}</td>
+            <td>{{m.materia.nombre}}</td>
             <td >
-              <p *ngFor= "let h of m.horario">
+              <p *ngFor= "let h of m.materia.horario">
                 {{h.dia}}--{{h.hora}}
               </p>
             </td>
@@ -22,7 +22,7 @@
               
             </td>
             <td>
-              <button class="button is-primary" routerLink= "{{m.id}}">Detalles</button>
+              <button class="button is-primary" routerLink= "{{m.materia.id}}">Detalles</button>
             </td>
           </tr>
           

@@ -35,6 +35,9 @@ import { MateriasAlumnoComponent } from './pages/alumno/materias-alumno/materias
 import { MateriasAlumnoDetallesComponent } from './pages/alumno/materias-alumno-detalles/materias-alumno-detalles.component';
 import { TareaDetallesAlumnoComponent } from './pages/alumno/tarea-detalles-alumno/tarea-detalles-alumno.component';
 import { ProyectoDetallesAlumnoComponent } from './pages/alumno/proyecto-detalles-alumno/proyecto-detalles-alumno.component';
+import { GruposComponent } from './pages/admin/grupos/grupos.component';
+import { AlumnosComponent } from './pages/admin/alumnos/alumnos.component';
+import { ProfesoresComponent } from './pages/admin/profesores/profesores.component';
 
 
 @NgModule({
@@ -60,7 +63,10 @@ import { ProyectoDetallesAlumnoComponent } from './pages/alumno/proyecto-detalle
     MateriasAlumnoComponent,
     MateriasAlumnoDetallesComponent,
     TareaDetallesAlumnoComponent,
-    ProyectoDetallesAlumnoComponent
+    ProyectoDetallesAlumnoComponent,
+    GruposComponent,
+    AlumnosComponent,
+    ProfesoresComponent
   ],
   imports: [
     BrowserModule,

@@ -47,7 +47,7 @@ export class AuthService {
       profilePic: 'https://www.shareicon.net/data/512x512/2016/08/18/813864_people_512x512.png'
     },
     {
-      userName: 'Erendira', password: '123456', schoolId: 'ABC12345',
+      userName: 'Erendira', password: '123456', schoolId: '123456789',
       area: 'Ingeniería en Tecnologías de la Información y Comunicación',
       edificio: 'H',
       isAdmin: true,
@@ -104,7 +104,7 @@ export class AuthService {
       this.users.find(u => u.password == pass && u.schoolId == id);
       console.log('TEACHER');
       return 'isTeacher';
-    } else if (id.includes('ABC')) {
+    } else if (id.includes('1234')) {
       this.users.find(u => u.password == pass && u.schoolId == id);
       console.log('ADMIN');
       return 'isAdmin';

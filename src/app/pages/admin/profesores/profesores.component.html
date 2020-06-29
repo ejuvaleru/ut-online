@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="title is- has-text-centered">Profesores</h1>
+
+    <table class="table is-fullwidth">
+        <thead>
+            <th>Profesor</th>
+            <th>Matrícula</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of profesores">
+            <td>{{p.nombre}}</td>
+            <td>{{p.matricula}}</td>
+          
+            
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
