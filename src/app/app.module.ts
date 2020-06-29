@@ -31,6 +31,10 @@ import { TareaDetallesComponent } from './pages/profesor/tarea-detalles/tarea-de
 import { ProyectoDetallesComponent } from './pages/profesor/proyecto-detalles/proyecto-detalles.component';
 import { CalificarComponent } from './pages/profesor/calificar/calificar.component';
 import { IniciarStreamComponent } from './pages/profesor/iniciar-stream/iniciar-stream.component';
+import { MateriasAlumnoComponent } from './pages/alumno/materias-alumno/materias-alumno.component';
+import { MateriasAlumnoDetallesComponent } from './pages/alumno/materias-alumno-detalles/materias-alumno-detalles.component';
+import { TareaDetallesAlumnoComponent } from './pages/alumno/tarea-detalles-alumno/tarea-detalles-alumno.component';
+import { ProyectoDetallesAlumnoComponent } from './pages/alumno/proyecto-detalles-alumno/proyecto-detalles-alumno.component';
 
 
 @NgModule({
@@ -52,7 +56,11 @@ import { IniciarStreamComponent } from './pages/profesor/iniciar-stream/iniciar-
     TareaDetallesComponent,
     ProyectoDetallesComponent,
     CalificarComponent,
-    IniciarStreamComponent
+    IniciarStreamComponent,
+    MateriasAlumnoComponent,
+    MateriasAlumnoDetallesComponent,
+    TareaDetallesAlumnoComponent,
+    ProyectoDetallesAlumnoComponent
   ],
   imports: [
     BrowserModule,

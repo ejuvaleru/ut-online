@@ -1,0 +1,31 @@
+.container{
+    min-height: 90vh;
+    padding: 5%;
+}
+
+.tarea{
+    display: block;
+    margin-top: 50px;
+    border: 2px solid var(--font-color);
+    padding: 20px;
+}
+
+.proyecto{
+    display: block;
+    margin-top: 50px;
+    border: 2px solid var(--font-color);
+    padding: 20px;
+}
+
+.mr{
+    margin-right: 10px;
+}
+
+.columns {
+    margin-top: 100px;
+
+    .column {
+        margin: 20px;
+    }
+}
+

@@ -6,4 +6,5 @@ export interface EntregaProyecto {
     proyectoID: string;
     calificación: number; 
     alumno: Alumno;
+    archivo: string; 
 }

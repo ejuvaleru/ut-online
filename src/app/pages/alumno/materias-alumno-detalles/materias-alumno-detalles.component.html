@@ -1,0 +1,50 @@
+<div class="container">
+  <h1 class="title is-1 has-text-centered">{{ materia.nombre }}</h1>
+  <a class="button is-primary" style="float: right;" (click)="backClicked()">
+    <span>
+      <i class="fa fa-chevron-circle-left mr" aria-hidden="true"></i>
+    </span>
+    Volver
+  </a>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-3 has-text-centered">Tareas</h1>
+      <div *ngFor="let t of tareas" class="tarea">
+        <h2 class="title is-4">{{ t.nombre }}</h2>
+        <h2 class="title is-6">Instrucciones:</h2>
+        <p>{{ t.instrucciones }}</p>
+        <h2 class="title is-6" style="margin-top: 10px;">Fecha de entrega:</h2>
+        <p *ngIf="t.fechaEntrega">{{ t.fechaEntrega.toDate() | date }}</p>
+        <button
+          class="button is-secondary has-text-right"
+          routerLink="/tareaA/{{t.id}}"
+          style="margin: 10px;"
+        >
+          <span><i class="fa fa-info mr" aria-hidden="true"></i></span>
+          Añadir Entrega
+        </button>
+      </div>
+    </div>
+    <div class="column">
+      <h1 class="title is-3 has-text-centered">Proyectos</h1>
+
+      <div *ngFor="let p of proyectos" class="proyecto">
+        <h2 class="title is-4">{{ p.nombre }}</h2>
+        <h2 class="title is-6">Instrucciones:</h2>
+        <p>{{ p.instrucciones }}</p>
+        <h2 class="title is-6" style="margin-top: 10px;">
+          Fecha de entrega:
+        </h2>
+        <p *ngIf="p.fechaEntrega">{{ p.fechaEntrega.toDate() | date }}</p>
+        <button
+          class="button is-secondary has-text-right"
+          routerLink="/proyectoA/{{p.id}}"
+          style="margin: 10px;"
+        >
+          <span><i class="fa fa-info mr" aria-hidden="true"></i></span>
+          Añadir Entrega
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
