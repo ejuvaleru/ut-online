@@ -42,8 +42,9 @@ export class CalificarComponent implements OnInit {
 
   calificar( calificacion) {
 
+    const cal = parseInt(calificacion); 
     this.afs.collection('entregas').doc(this.id).update({
-      calificacion: calificacion 
+      calificacion: cal
     })
 
   }

@@ -5,6 +5,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { ToastrService } from "ngx-toastr";
 import { Grupo } from "src/app/shared/models/grupo.model";
 import { Location } from "@angular/common";
+import { Alumno } from 'src/app/shared/models/alumno.model';
 
 @Component({
   selector: "app-alumnos",
@@ -33,7 +34,10 @@ export class AlumnosComponent implements OnInit {
       .valueChanges()
       .subscribe((alumnos) => {
         console.log(alumnos);
-        alumnos.forEach((element) => {
+        alumnos.forEach((element : Alumno) => {
+
+          
+
           this.alumnos.push(element);
         });
       });

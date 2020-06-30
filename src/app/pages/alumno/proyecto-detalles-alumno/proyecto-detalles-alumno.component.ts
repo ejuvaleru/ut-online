@@ -120,6 +120,7 @@ export class ProyectoDetallesAlumnoComponent implements OnInit {
         alumno: this.alumno,
         tareaID: this.id,
         comentarios: this.formProyecto.value.comentarios,
+        calificacion: ''
       })
       .then((res) => {
         this.toast.success("Regitro con éxito", "Mensaje", {
