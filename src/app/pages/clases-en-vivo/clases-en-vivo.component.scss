@@ -1,41 +1,25 @@
-.card {
-  max-width: 400px;
-  margin: 10px;
-  height: auto;
+.container{
+  padding: 10%;
 }
+  .grid {
+    margin: 5%;
+    display: grid;
+   // grid-auto-rows: 450px;
+    grid-auto-columns: 30%;
+    grid-gap: 1.5rem;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .cards {
+    grid-column: span 1;
+    //background-color: black;
+    //   color: white;
+    border-radius: 5px;
+    background-color: var(--card-background);
+    border: 2px solid black;
+  }
 
-.card-content {
-  height: 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.card-content1 {
-  padding: 1.5rem;
-  height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
-.columns {
-  overflow-x: scroll;
-}
-
-::-webkit-scrollbar {
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: grey;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: black;
-  border-radius: 10px;
-}
 
 .subtitle {
   font-size: 16px;

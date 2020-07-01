@@ -38,6 +38,10 @@ import { ProyectoDetallesAlumnoComponent } from './pages/alumno/proyecto-detalle
 import { GruposComponent } from './pages/admin/grupos/grupos.component';
 import { AlumnosComponent } from './pages/admin/alumnos/alumnos.component';
 import { ProfesoresComponent } from './pages/admin/profesores/profesores.component';
+import { MateriasAdminComponent } from './pages/admin/materiasAdmin/materiasAdmin.component';
+import { MateriasAddComponent } from './pages/admin/materias-add/materias-add.component';
+
+
 
 
 @NgModule({
@@ -66,7 +70,9 @@ import { ProfesoresComponent } from './pages/admin/profesores/profesores.compone
     ProyectoDetallesAlumnoComponent,
     GruposComponent,
     AlumnosComponent,
-    ProfesoresComponent
+    ProfesoresComponent,
+    MateriasAdminComponent,
+    MateriasAddComponent,
   ],
   imports: [
     BrowserModule,

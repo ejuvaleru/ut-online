@@ -4,6 +4,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Alumno } from "src/app/shared/models/alumno.model";
 import { Materia } from "src/app/shared/models/materia.model";
+import { Grupo } from "src/app/shared/models/grupo.model";
 
 @Component({
   selector: "app-clases-programadas",
@@ -27,18 +28,24 @@ export class ClasesProgramadasComponent implements OnInit {
         .doc(res.uid)
         .valueChanges()
         .subscribe((res: Alumno) => {
-          res.materias.forEach((materia: Materia) => {
-            console.log(materia);
+          console.log(res.grupoID + "GRUPOOOO");
 
-            this.afs
-              .collection("materias")
-              .doc(materia.id)
-              .valueChanges()
-              .subscribe((materia: Materia) => {
-                this.materias.push(materia);
-                console.log(this.materias + " MATERIAS");
+          this.afs
+            .collection("grupos")
+            .doc(res.grupoID)
+            .valueChanges()
+            .subscribe((grupo: Grupo) => {
+              grupo.materias.forEach((m) => {
+                this.afs
+                  .collection("materias")
+                  .doc(m)
+                  .valueChanges()
+                  .subscribe((materia: Materia) => {
+                    this.materias.push(materia);
+                    console.log(this.materias + " MATERIAS");
+                  });
               });
-          });
+            });
         });
     });
   }

@@ -8,10 +8,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let a of alumnos">
-            <td>{{a.nombre}}</td>
+            <td>{{a.alumno.nombre}}</td>
           
-            <td>
-              
+            <td *ngFor = "let cal of a.calFinal" >
+              {{cal}}
             </td>
           </tr>
           

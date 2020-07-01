@@ -33,8 +33,11 @@ export class ClasesEnVivoComponent implements OnInit {
         .valueChanges()
         .subscribe( (res : Alumno) => { 
           this.materias = [];
+
+
+
           res.materias.forEach((materia: Materia) => {
-            console.log(materia); 
+   
 
             this.afs
               .collection("materias")
@@ -42,8 +45,11 @@ export class ClasesEnVivoComponent implements OnInit {
               .valueChanges()
               .subscribe((materia: Materia) => {
                 
+                if(materia.envivo) {
                   this.materias.push(materia);
-                  console.log(this.materias + " MATERIAS");
+                }
+               
+
                 
               });
           });

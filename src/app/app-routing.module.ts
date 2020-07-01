@@ -22,6 +22,9 @@ import { ProyectoDetallesAlumnoComponent } from './pages/alumno/proyecto-detalle
 import { GruposComponent } from './pages/admin/grupos/grupos.component';
 import { AlumnosComponent } from './pages/admin/alumnos/alumnos.component';
 import { ProfesoresComponent } from './pages/admin/profesores/profesores.component';
+import { MateriasAdminComponent } from './pages/admin/materiasAdmin/materiasAdmin.component';
+import { MateriasAddComponent } from './pages/admin/materias-add/materias-add.component';
+
 
 const routes: Routes = [
   { path: "", component: LandingComponent },
@@ -63,7 +66,9 @@ const routes: Routes = [
   {path: 'proyectoA/:id', component: ProyectoDetallesAlumnoComponent},
   {path: 'grupos', component: GruposComponent},
   {path: 'grupos/:id', component: AlumnosComponent},
-  {path: 'profesores', component: ProfesoresComponent }
+  {path: 'profesores', component: ProfesoresComponent },
+  {path: 'materiasAdmin', component: MateriasAdminComponent},
+  {path: 'materiasAdd/:id', component: MateriasAddComponent},
 ];
 
 @NgModule({

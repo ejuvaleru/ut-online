@@ -1,11 +1,20 @@
 <div class="container">
   <h1 class="title is-1 has-text-centered">{{ entrega.alumno.nombre }}</h1>
-  <button class="is-primary button" style="float: right;">Editar</button>
+  <button
+    class="button is-secondary"
+    style="float: right; margin: 10px;"
+    (click)="backClicked()"
+  >
+    <span>
+      <i class="fa fa-chevron-circle-left mr" aria-hidden="true"></i>
+    </span>
+    Volver
+  </button>
 
   <div class="columns">
     <div class="column">
       <h2 class="title is-3" style="margin-top: 10px;">Grupo:</h2>
-      <p>{{ entrega.alumno.grupo }}</p>
+      <p>{{ grupo }}</p>
       <h2 class="title is-3" style="margin-top: 10px;">Comentarios:</h2>
       <p>{{ entrega.comentarios }}</p>
 

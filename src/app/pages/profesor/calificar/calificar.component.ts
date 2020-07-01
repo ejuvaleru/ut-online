@@ -3,6 +3,8 @@ import { Entrega } from 'src/app/shared/models/entrega.model';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Location } from "@angular/common";
+import { Grupo } from 'src/app/shared/models/grupo.model';
 
 @Component({
   selector: 'app-calificar',
@@ -12,12 +14,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CalificarComponent implements OnInit {
 
   public id: string;
-  public entrega: Entrega = {} as Entrega;
+  public entrega= {} as Entrega;
+  grupo = '';
 
   constructor(
     private actRoute: ActivatedRoute, // Se utliza para obtener datos de la ruta actual
     private afs: AngularFirestore,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +35,10 @@ export class CalificarComponent implements OnInit {
         console.log(res);
         this.entrega = res;
         console.log(this.entrega);
+
+        this.afs.collection('grupos').doc(this.entrega.alumno.grupoID).valueChanges().subscribe( (g: Grupo) => {
+          this.grupo = g.nombre;
+        })
       });
   }
 
@@ -47,6 +55,12 @@ export class CalificarComponent implements OnInit {
       calificacion: cal
     })
 
+  }
+
+
+  
+  backClicked() {
+    this._location.back();
   }
 
 }

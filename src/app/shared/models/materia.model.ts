@@ -6,7 +6,7 @@ import { SafeUrl } from '@angular/platform-browser';
 export interface Materia {
     id: string;
     nombre: string;
-    horario: string; 
+    horario: []; 
     profesorId: string; 
     archivo: string;
     envivo: boolean; 

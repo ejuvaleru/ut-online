@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-proyecto-detalles-alumno',
@@ -123,6 +124,9 @@ export class ProyectoDetallesAlumnoComponent implements OnInit {
         calificacion: ''
       })
       .then((res) => {
+        this.afs.collection('alumnos').doc(this.alumno.id).update({
+          entregasProyecto: firebase.firestore.FieldValue.arrayRemove(this.entrega.id)
+        })
         this.toast.success("Regitro con éxito", "Mensaje", {
           positionClass: "toast-bottom-center",
           timeOut: 3000,

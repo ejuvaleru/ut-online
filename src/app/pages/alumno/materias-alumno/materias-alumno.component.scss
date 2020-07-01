@@ -1,8 +1,23 @@
-.card {
-    min-width: 300px;
-    max-width: 400px;
-    margin: 10px;
-    min-height: 320px;
-    height: auto;
+.container{
+  padding: 10%;
+}
+  .grid {
+    margin: 5%;
+    display: grid;
+   // grid-auto-rows: 450px;
+    grid-auto-columns: 30%;
+    grid-gap: 1.5rem;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(3, 1fr);
   }
+  
+  .cards {
+    grid-column: span 1;
+    //background-color: black;
+    //   color: white;
+    border-radius: 5px;
+    background-color: var(--card-background);
+    border: 2px solid black;
+  }
+
   

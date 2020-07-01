@@ -9,6 +9,7 @@ import { ToastrService } from "ngx-toastr";
 import { Entrega } from "src/app/shared/models/entrega.model";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Alumno } from "src/app/shared/models/alumno.model";
+import * as firebase from 'firebase';
 @Component({
   selector: "app-tarea-detalles-alumno",
   templateUrl: "./tarea-detalles-alumno.component.html",
@@ -58,21 +59,20 @@ export class TareaDetallesAlumnoComponent implements OnInit {
         .valueChanges()
         .subscribe((res) => {
           this.alumno = res as Alumno;
-          console.log(this.alumno + "Alumno");
+          console.log(this.id + "TareaId");
           console.log(this.idAlumno);
         });
-
       this.afs
         .collection("entregas", (ref) =>
           ref
             .where("tareaID", "==", this.id)
-            .where("alumno.id", "==", this.idAlumno)
+            .where("alumnoId", "==", this.idAlumno)
         )
         .valueChanges()
         .subscribe((res: any) => {
-          console.log(res);
+          console.log(res , 'Esta es la entrega');
 
-          if(!res.value) {
+          if(res.legth < 1) {
             this.entrega.id = this.afs.createId();
             this.afs.collection("entregas").doc(this.entrega.id).set({
               id: this.entrega.id,
@@ -118,10 +118,14 @@ export class TareaDetallesAlumnoComponent implements OnInit {
         alumno: this.alumno,
         tareaID: this.id,
         comentarios: this.formTarea.value.comentarios,
-        calificacion: ''
+        calificacion: '',
+        alumnoId: this.alumno.id
       })
       .then((res) => {
-        this.toast.success("Regitro con éxito", "Mensaje", {
+        this.afs.collection('alumnos').doc(this.alumno.id).update({
+          entregas: firebase.firestore.FieldValue.arrayRemove(this.entrega.id)
+        })
+        this.toast.success("Registro con éxito", "Mensaje", {
           positionClass: "toast-bottom-center",
           timeOut: 3000,
         });

@@ -1,0 +1,62 @@
+<div class="container">
+
+    <h1 class="title is- has-text-centered">Materias</h1>
+    <button class="button is-primary" (click)="isAddingMateria()">Agregar Materia</button>
+    <div class="container" *ngIf="isEditing || isAdding">
+  
+  
+      <h1 class="title" *ngIf="isAdding">Agregar Materia</h1>
+      <h1 class="title" *ngIf="isEditing">Editar Materia</h1>
+      <!-- INICIA FORMULARIO -->
+      <form [formGroup]="formMateria">
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Integradora" formControlName="nombre">
+          </div>
+        </div>
+  
+        <div class="field">
+          <label class="label">Profesor</label>
+          <div class="select">
+            <select formControlName="profesorId">
+              <option *ngFor="let p of profesores" [value]="p.id">{{p.nombre}}</option>
+          </select>
+          </div>
+        </div>
+
+  
+        <button class="button is-primary is-fullwidth" [disabled]="!formMateria.valid"
+          *ngIf="isAdding" (click) = "onSubmit()">Agregar</button>
+  
+        <button class="button is-primary is-fullwidth"  [disabled]="!formMateria.valid"
+          *ngIf="isEditing" (click) = "onUpdate()">Actualizar</button>
+        <br>
+        <button class="button is-danger is-fullwidth" (click)="isAddingMateria()" *ngIf="isAdding">Cancelar</button>
+        <button class="button is-danger is-fullwidth" (click)="isEditingMateria()" *ngIf="isEditing">Cancelar</button>
+      </form>
+      <!-- TERMINA FORMULARIO -->
+    </div>
+    <table class="table is-fullwidth">
+      <thead>
+        <th>Profesor</th>
+        <th>Opciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of materias">
+          <td>{{m.nombre}}</td>
+          <td>
+            <button class="button is-primary" (click)="onEditar(m)" >
+              <span>Editar</span>
+              <span><i class="fas fa-edit ml"></i></span>
+            </button>
+            <button class="button is-danger" (click)="deleteMateria(m.id)">
+              Eliminar
+              <span><i class="fas fa-trash ml"></i></span>
+            </button>
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  </div>

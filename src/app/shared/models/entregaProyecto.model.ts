@@ -7,4 +7,5 @@ export interface EntregaProyecto {
     calificación: number; 
     alumno: Alumno;
     archivo: string; 
+    alumnoId: string; 
 }

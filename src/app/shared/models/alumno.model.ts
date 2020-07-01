@@ -5,7 +5,10 @@ export interface Alumno {
     id: string;
     nombre: string;
     matrícula: string;
-    grupo: Grupo; 
+    grupoID: string; 
     materias: Materia[]
+    entregas: [];
+    entregasProyecto: [];
+    calificaciones: [];
 
 }

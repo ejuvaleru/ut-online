@@ -1,0 +1,149 @@
+<div class="container">
+  <h1 class="title is- has-text-centered">
+    Materias del Grupo {{ grupo.nombre }}
+  </h1>
+
+  <table class="table is-fullwidth">
+    <thead>
+      <th>Materia</th>
+      <th>Horario</th>
+      <th>Más</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of materias">
+        <td>{{ m.nombre }}</td>
+
+        <td>
+          <div *ngFor="let h of m.horario">
+            <p *ngIf="h.grupo == grupo.nombre">{{ h.dia }}- {{ h.hora }}</p>
+          </div>
+        </td>
+        <td>
+          <button class="button is-danger" (click)="deleteMateria(m.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1 class="title is-2 has-text-centered">Agregar materia</h1>
+
+  <form [formGroup]="formMateria">
+    <div class="field">
+      <label class="label">Materia</label>
+      <div class="select">
+        <select formControlName="materiaId">
+          <option *ngFor="let m of materiasSelect" [value]="m.id">{{
+            m.nombre
+          }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Dia</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Lunes"
+              formControlName="dia1"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Hora</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="19:00-19:50"
+              formControlName="hora1"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Dia</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Lunes"
+              formControlName="dia2"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Hora</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="19:00-19:50"
+              formControlName="hora2"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Dia</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Lunes"
+              formControlName="dia3"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Hora</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="19:00-19:50"
+              formControlName="hora3"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button
+      class="button is-primary is-fullwidth"
+      [disabled]="!formMateria.valid"
+      (click)="onSubmit()"
+    >
+      Agregar
+    </button>
+
+    <button
+      class="button is-primary is-fullwidth"
+      [disabled]="!formMateria.valid"
+      *ngIf="isEditing"
+      (click)="onUpdate()"
+    >
+      Actualizar
+    </button>
+    <br />
+  </form>
+</div>
