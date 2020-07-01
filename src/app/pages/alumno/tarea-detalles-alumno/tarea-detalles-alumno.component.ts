@@ -69,10 +69,10 @@ export class TareaDetallesAlumnoComponent implements OnInit {
             .where("alumnoId", "==", this.idAlumno)
         )
         .valueChanges()
-        .subscribe((res: any) => {
+        .subscribe((res: any []) => {
           console.log(res , 'Esta es la entrega');
 
-          if(res.legth < 1) {
+          if(res.length < 1) {
             this.entrega.id = this.afs.createId();
             this.afs.collection("entregas").doc(this.entrega.id).set({
               id: this.entrega.id,
